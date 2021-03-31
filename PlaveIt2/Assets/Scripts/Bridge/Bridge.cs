@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Bridge : MonoBehaviour
 {
     public int height = 1;
@@ -21,8 +20,12 @@ public class Bridge : MonoBehaviour
         
     }
 
-    private initBridge()
+    private void initBridge()
     {
-        id = ++numOfBridges;
+    }
+
+    private void RotateOnClickAndDrag()
+    {
+
     }
 }
