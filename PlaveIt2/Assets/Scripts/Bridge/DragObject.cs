@@ -11,24 +11,6 @@ public class DragObject : MonoBehaviour
     private float mousePositionX;
     private float mousePositionY;
     private float mousePositionZ;
-    private MeshRenderer renderer;
-    private Color tempColor;
-
-    private void start()
-    {
-        renderer = GetComponent<MeshRenderer>();
-    }
-
-    void OnMouseEnter()
-    {
-        tempColor = renderer.material.color;
-        renderer.material.color = Color.red;
-    }
-    void OnMouseExit()
-    {
-        renderer.material.color = tempColor;
-    }
-
     void OnMouseDown()
     {
         objectPosition = transform.position;
