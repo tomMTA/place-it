@@ -646,7 +646,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 639b11d4dcb40cd4581513beceabd956,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 7.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 639b11d4dcb40cd4581513beceabd956,
         type: 3}
@@ -798,6 +798,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789522022}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1873814085 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2200867998443895967, guid: 818d2c3bf6bcb784b8634eb1872c35da,
+    type: 3}
+  m_PrefabInstance: {fileID: 8054599944127708077}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1873814092
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873814085}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: 65d7927972dbed44090a5d58b76e3667, type: 3}
 --- !u!1 &1940221505
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,12 +973,12 @@ PrefabInstance:
     - target: {fileID: 470486714774944920, guid: 197c18043d83780408ae41f5f4a7da91,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -134.90001
       objectReference: {fileID: 0}
     - target: {fileID: 470486714774944920, guid: 197c18043d83780408ae41f5f4a7da91,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 151.5
       objectReference: {fileID: 0}
     - target: {fileID: 470486714774944920, guid: 197c18043d83780408ae41f5f4a7da91,
         type: 3}
@@ -1157,6 +1177,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowBridge2
       objectReference: {fileID: 0}
+    - target: {fileID: 403570106265661927, guid: a001cfadde84fc7468d9982a008d11e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1067938545850526557, guid: a001cfadde84fc7468d9982a008d11e2,
         type: 3}
       propertyPath: m_RootOrder
@@ -1165,12 +1190,12 @@ PrefabInstance:
     - target: {fileID: 1067938545850526557, guid: a001cfadde84fc7468d9982a008d11e2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 103
       objectReference: {fileID: 0}
     - target: {fileID: 1067938545850526557, guid: a001cfadde84fc7468d9982a008d11e2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -65.4
       objectReference: {fileID: 0}
     - target: {fileID: 1067938545850526557, guid: a001cfadde84fc7468d9982a008d11e2,
         type: 3}
@@ -1226,6 +1251,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PurpleBridge4
       objectReference: {fileID: 0}
+    - target: {fileID: 406614457679657897, guid: a6ff833548a4cd146ad7016eef697777,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1076154828905308435, guid: a6ff833548a4cd146ad7016eef697777,
         type: 3}
       propertyPath: m_RootOrder
@@ -1234,12 +1264,12 @@ PrefabInstance:
     - target: {fileID: 1076154828905308435, guid: a6ff833548a4cd146ad7016eef697777,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -196.4
       objectReference: {fileID: 0}
     - target: {fileID: 1076154828905308435, guid: a6ff833548a4cd146ad7016eef697777,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -59.5
       objectReference: {fileID: 0}
     - target: {fileID: 1076154828905308435, guid: a6ff833548a4cd146ad7016eef697777,
         type: 3}
@@ -1303,12 +1333,12 @@ PrefabInstance:
     - target: {fileID: 2169333683122393918, guid: eabe476e98e3b014f94e36559e51e478,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 178.2
       objectReference: {fileID: 0}
     - target: {fileID: 2169333683122393918, guid: eabe476e98e3b014f94e36559e51e478,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 145.1
       objectReference: {fileID: 0}
     - target: {fileID: 2169333683122393918, guid: eabe476e98e3b014f94e36559e51e478,
         type: 3}
@@ -1370,6 +1400,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueBridge6
       objectReference: {fileID: 0}
+    - target: {fileID: 1250885826860202399, guid: c9cb60b9369b8a84d9c6fd404002e6be,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1880211770281485093, guid: c9cb60b9369b8a84d9c6fd404002e6be,
         type: 3}
       propertyPath: m_RootOrder
@@ -1378,12 +1413,12 @@ PrefabInstance:
     - target: {fileID: 1880211770281485093, guid: c9cb60b9369b8a84d9c6fd404002e6be,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 187.7
       objectReference: {fileID: 0}
     - target: {fileID: 1880211770281485093, guid: c9cb60b9369b8a84d9c6fd404002e6be,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 42.4
       objectReference: {fileID: 0}
     - target: {fileID: 1880211770281485093, guid: c9cb60b9369b8a84d9c6fd404002e6be,
         type: 3}
@@ -1447,7 +1482,7 @@ PrefabInstance:
     - target: {fileID: 2536751969761852241, guid: 7bc8b61e9a0d147428d995932e2b3e4d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -109.7
       objectReference: {fileID: 0}
     - target: {fileID: 2536751969761852241, guid: 7bc8b61e9a0d147428d995932e2b3e4d,
         type: 3}
@@ -1494,6 +1529,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OrangeBridge6
       objectReference: {fileID: 0}
+    - target: {fileID: 2918203732910744043, guid: 7bc8b61e9a0d147428d995932e2b3e4d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bc8b61e9a0d147428d995932e2b3e4d, type: 3}
 --- !u!1001 &3311966304720648230
@@ -1508,6 +1548,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OrangeBridge4
       objectReference: {fileID: 0}
+    - target: {fileID: 2393414848398943732, guid: 61a36ccc285286046bf6f5356d82007c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3061549115776614222, guid: 61a36ccc285286046bf6f5356d82007c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1516,7 +1561,7 @@ PrefabInstance:
     - target: {fileID: 3061549115776614222, guid: 61a36ccc285286046bf6f5356d82007c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -194.2
       objectReference: {fileID: 0}
     - target: {fileID: 3061549115776614222, guid: 61a36ccc285286046bf6f5356d82007c,
         type: 3}
@@ -1572,6 +1617,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1521336534}
     m_Modifications:
+    - target: {fileID: 3874531346581265787, guid: 03f4f26af9f00944587094388d41df6f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -286.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874531346581265787, guid: 03f4f26af9f00944587094388d41df6f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -162.9
+      objectReference: {fileID: 0}
     - target: {fileID: 3962883059168769689, guid: 03f4f26af9f00944587094388d41df6f,
         type: 3}
       propertyPath: m_Name
@@ -1585,17 +1640,17 @@ PrefabInstance:
     - target: {fileID: 4446510277803551779, guid: 03f4f26af9f00944587094388d41df6f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 222.8
       objectReference: {fileID: 0}
     - target: {fileID: 4446510277803551779, guid: 03f4f26af9f00944587094388d41df6f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 156.6
       objectReference: {fileID: 0}
     - target: {fileID: 4446510277803551779, guid: 03f4f26af9f00944587094388d41df6f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -5.2
       objectReference: {fileID: 0}
     - target: {fileID: 4446510277803551779, guid: 03f4f26af9f00944587094388d41df6f,
         type: 3}
@@ -1646,6 +1701,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PurpleBridge6
       objectReference: {fileID: 0}
+    - target: {fileID: 3465996958377279319, guid: 7965d69cd42b60e4cb7c7ffbba29176c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4274586139154261485, guid: 7965d69cd42b60e4cb7c7ffbba29176c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1654,12 +1714,12 @@ PrefabInstance:
     - target: {fileID: 4274586139154261485, guid: 7965d69cd42b60e4cb7c7ffbba29176c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 203.7
       objectReference: {fileID: 0}
     - target: {fileID: 4274586139154261485, guid: 7965d69cd42b60e4cb7c7ffbba29176c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -71.5
       objectReference: {fileID: 0}
     - target: {fileID: 4274586139154261485, guid: 7965d69cd42b60e4cb7c7ffbba29176c,
         type: 3}
@@ -1715,6 +1775,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueBridge3
       objectReference: {fileID: 0}
+    - target: {fileID: 3469290280787184124, guid: cb95719990521ae4fbe129cac5a24a7b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4282559915080897350, guid: cb95719990521ae4fbe129cac5a24a7b,
         type: 3}
       propertyPath: m_RootOrder
@@ -1723,7 +1788,7 @@ PrefabInstance:
     - target: {fileID: 4282559915080897350, guid: cb95719990521ae4fbe129cac5a24a7b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 293.3
       objectReference: {fileID: 0}
     - target: {fileID: 4282559915080897350, guid: cb95719990521ae4fbe129cac5a24a7b,
         type: 3}
@@ -1787,12 +1852,12 @@ PrefabInstance:
     - target: {fileID: 5118919735141829442, guid: 7ba2c63fd351af849b2cd60b802166fd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -64.6
       objectReference: {fileID: 0}
     - target: {fileID: 5118919735141829442, guid: 7ba2c63fd351af849b2cd60b802166fd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.4
       objectReference: {fileID: 0}
     - target: {fileID: 5118919735141829442, guid: 7ba2c63fd351af849b2cd60b802166fd,
         type: 3}
@@ -1856,12 +1921,12 @@ PrefabInstance:
     - target: {fileID: 6041283809109775266, guid: 49f01a2e70c00b241a2753c19d33faee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -272.2
       objectReference: {fileID: 0}
     - target: {fileID: 6041283809109775266, guid: 49f01a2e70c00b241a2753c19d33faee,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -87.7
       objectReference: {fileID: 0}
     - target: {fileID: 6041283809109775266, guid: 49f01a2e70c00b241a2753c19d33faee,
         type: 3}
@@ -1908,6 +1973,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OrangeBridge3
       objectReference: {fileID: 0}
+    - target: {fileID: 6385298541652134168, guid: 49f01a2e70c00b241a2753c19d33faee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f01a2e70c00b241a2753c19d33faee, type: 3}
 --- !u!1001 &6467396139855225964
@@ -1922,6 +1992,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PurpleBridge1
       objectReference: {fileID: 0}
+    - target: {fileID: 6125360964444712669, guid: 5fed818f071069645a7da12db9cf3285,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6794374909581931623, guid: 5fed818f071069645a7da12db9cf3285,
         type: 3}
       propertyPath: m_RootOrder
@@ -1930,12 +2005,12 @@ PrefabInstance:
     - target: {fileID: 6794374909581931623, guid: 5fed818f071069645a7da12db9cf3285,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 378.1
       objectReference: {fileID: 0}
     - target: {fileID: 6794374909581931623, guid: 5fed818f071069645a7da12db9cf3285,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 28.8
       objectReference: {fileID: 0}
     - target: {fileID: 6794374909581931623, guid: 5fed818f071069645a7da12db9cf3285,
         type: 3}
@@ -2004,7 +2079,7 @@ PrefabInstance:
     - target: {fileID: 6768706671655537496, guid: 6b1b4fe54cbedc44db71c896d8d8f55b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 123.6
       objectReference: {fileID: 0}
     - target: {fileID: 6768706671655537496, guid: 6b1b4fe54cbedc44db71c896d8d8f55b,
         type: 3}
@@ -2115,6 +2190,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowBridge1
       objectReference: {fileID: 0}
+    - target: {fileID: 5477295499865909225, guid: a01b428e2b4e29c428b018636d5fbfd1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a01b428e2b4e29c428b018636d5fbfd1, type: 3}
 --- !u!1001 &7348018707773166521
@@ -2132,7 +2212,7 @@ PrefabInstance:
     - target: {fileID: 7094244082827739016, guid: 0473b8ae8fb03c64a8e6840109e230a7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -200.1
       objectReference: {fileID: 0}
     - target: {fileID: 7094244082827739016, guid: 0473b8ae8fb03c64a8e6840109e230a7,
         type: 3}
@@ -2184,6 +2264,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PurpleBridge3
       objectReference: {fileID: 0}
+    - target: {fileID: 7581811916426536242, guid: 0473b8ae8fb03c64a8e6840109e230a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0473b8ae8fb03c64a8e6840109e230a7, type: 3}
 --- !u!1001 &7623101244434811204
@@ -2206,12 +2291,12 @@ PrefabInstance:
     - target: {fileID: 7944362164542396163, guid: 0e3d3b539823f8a40b6537b7ff406379,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 110.7
       objectReference: {fileID: 0}
     - target: {fileID: 7944362164542396163, guid: 0e3d3b539823f8a40b6537b7ff406379,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 118.6
       objectReference: {fileID: 0}
     - target: {fileID: 7944362164542396163, guid: 0e3d3b539823f8a40b6537b7ff406379,
         type: 3}
@@ -2262,6 +2347,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1521336534}
     m_Modifications:
+    - target: {fileID: 6934737169673875364, guid: 818d2c3bf6bcb784b8634eb1872c35da,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934737169673875364, guid: 818d2c3bf6bcb784b8634eb1872c35da,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934737169673875364, guid: 818d2c3bf6bcb784b8634eb1872c35da,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 7135608538560627782, guid: 818d2c3bf6bcb784b8634eb1872c35da,
         type: 3}
       propertyPath: m_Name
@@ -2275,12 +2375,12 @@ PrefabInstance:
     - target: {fileID: 7515688111483313916, guid: 818d2c3bf6bcb784b8634eb1872c35da,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -198.90001
       objectReference: {fileID: 0}
     - target: {fileID: 7515688111483313916, guid: 818d2c3bf6bcb784b8634eb1872c35da,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 156.7
       objectReference: {fileID: 0}
     - target: {fileID: 7515688111483313916, guid: 818d2c3bf6bcb784b8634eb1872c35da,
         type: 3}
@@ -2322,6 +2422,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8054599944463750735, guid: 818d2c3bf6bcb784b8634eb1872c35da,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 818d2c3bf6bcb784b8634eb1872c35da, type: 3}
 --- !u!1001 &8075419609354074796
@@ -2339,12 +2444,12 @@ PrefabInstance:
     - target: {fileID: 8618515452913832005, guid: 30e80e82d9f4ac346a6971bbc65df0dd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -270.1
       objectReference: {fileID: 0}
     - target: {fileID: 8618515452913832005, guid: 30e80e82d9f4ac346a6971bbc65df0dd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 156.7
       objectReference: {fileID: 0}
     - target: {fileID: 8618515452913832005, guid: 30e80e82d9f4ac346a6971bbc65df0dd,
         type: 3}
@@ -2408,12 +2513,12 @@ PrefabInstance:
     - target: {fileID: 8644927632929371715, guid: a0f87c1722119a1499a80a655c8c1754,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 289.3
       objectReference: {fileID: 0}
     - target: {fileID: 8644927632929371715, guid: a0f87c1722119a1499a80a655c8c1754,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 62.2
       objectReference: {fileID: 0}
     - target: {fileID: 8644927632929371715, guid: a0f87c1722119a1499a80a655c8c1754,
         type: 3}
@@ -2460,6 +2565,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowBridge5
       objectReference: {fileID: 0}
+    - target: {fileID: 8985564497419103481, guid: a0f87c1722119a1499a80a655c8c1754,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f87c1722119a1499a80a655c8c1754, type: 3}
 --- !u!1001 &8417100621711229048
@@ -2477,17 +2587,17 @@ PrefabInstance:
     - target: {fileID: 8306103456446810356, guid: f7383fdedb68a534489216026eff8286,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -348.7
       objectReference: {fileID: 0}
     - target: {fileID: 8306103456446810356, guid: f7383fdedb68a534489216026eff8286,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 155.6
       objectReference: {fileID: 0}
     - target: {fileID: 8306103456446810356, guid: f7383fdedb68a534489216026eff8286,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 109.6
       objectReference: {fileID: 0}
     - target: {fileID: 8306103456446810356, guid: f7383fdedb68a534489216026eff8286,
         type: 3}
@@ -2551,12 +2661,12 @@ PrefabInstance:
     - target: {fileID: 8877165256445578945, guid: f1294898684c8a44c9399eee55ba3880,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 63.4
       objectReference: {fileID: 0}
     - target: {fileID: 8877165256445578945, guid: f1294898684c8a44c9399eee55ba3880,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 126.6
       objectReference: {fileID: 0}
     - target: {fileID: 8877165256445578945, guid: f1294898684c8a44c9399eee55ba3880,
         type: 3}
@@ -2612,6 +2722,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PurpleBridge2
       objectReference: {fileID: 0}
+    - target: {fileID: 8149469756561395022, guid: ee126d0d09a7e6d4e8c00cb5dc0be195,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8814506802228090868, guid: ee126d0d09a7e6d4e8c00cb5dc0be195,
         type: 3}
       propertyPath: m_RootOrder
@@ -2620,12 +2735,12 @@ PrefabInstance:
     - target: {fileID: 8814506802228090868, guid: ee126d0d09a7e6d4e8c00cb5dc0be195,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 374.9
       objectReference: {fileID: 0}
     - target: {fileID: 8814506802228090868, guid: ee126d0d09a7e6d4e8c00cb5dc0be195,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 104
       objectReference: {fileID: 0}
     - target: {fileID: 8814506802228090868, guid: ee126d0d09a7e6d4e8c00cb5dc0be195,
         type: 3}
@@ -2689,12 +2804,12 @@ PrefabInstance:
     - target: {fileID: 8773983251837404872, guid: f73dde72c820099429ee8b5e879a5480,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 262.2
       objectReference: {fileID: 0}
     - target: {fileID: 8773983251837404872, guid: f73dde72c820099429ee8b5e879a5480,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 152.4
       objectReference: {fileID: 0}
     - target: {fileID: 8773983251837404872, guid: f73dde72c820099429ee8b5e879a5480,
         type: 3}
