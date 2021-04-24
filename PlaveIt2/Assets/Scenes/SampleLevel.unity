@@ -156,6 +156,89 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 126, y: 126.00003, z: 16.000004}
   m_Center: {x: -52, y: 52.00001, z: -7.000002}
+--- !u!1 &124157553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 124157557}
+  - component: {fileID: 124157556}
+  - component: {fileID: 124157555}
+  m_Layer: 0
+  m_Name: Camera2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &124157555
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124157553}
+  m_Enabled: 1
+--- !u!20 &124157556
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124157553}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 76.21
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &124157557
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124157553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -35, y: 45, z: -555}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &244324689
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +379,7 @@ GameObject:
   - component: {fileID: 795631012}
   - component: {fileID: 795631011}
   - component: {fileID: 795631010}
+  - component: {fileID: 795631013}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -361,13 +445,27 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795631009}
-  m_LocalRotation: {x: 0.16131824, y: -0, z: -0, w: 0.9869024}
-  m_LocalPosition: {x: -37, y: 160.78, z: -360.09}
+  m_LocalRotation: {x: 0.30124816, y: -0, z: -0, w: 0.9535458}
+  m_LocalPosition: {x: -37, y: 206.6, z: -269.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 18.567001, y: 0, z: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 35.065002, y: 0, z: 0}
+--- !u!114 &795631013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795631009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 614caacbf11e52b4c9dca0a5ab3d1c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera2d: {fileID: 124157556}
+  mainCamera: {fileID: 795631011}
 --- !u!1 &1042596614
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,7 +556,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 408.9, y: -359.5, z: 0}
 --- !u!1 &1143132347
 GameObject:
@@ -505,7 +603,7 @@ Transform:
   - {fileID: 754375279}
   - {fileID: 1940221510}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1143132350
 Rigidbody:
@@ -641,7 +739,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 639b11d4dcb40cd4581513beceabd956,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 639b11d4dcb40cd4581513beceabd956,
         type: 3}
@@ -956,7 +1054,7 @@ Transform:
   - {fileID: 1281872816}
   - {fileID: 244324690}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &75778691985204224
 PrefabInstance:
@@ -1024,6 +1122,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: YellowBridge6
+      objectReference: {fileID: 0}
+    - target: {fileID: 994259228929762850, guid: 197c18043d83780408ae41f5f4a7da91,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 197c18043d83780408ae41f5f4a7da91, type: 3}
@@ -1324,6 +1427,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: OrangeBridge2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535962567220693380, guid: eabe476e98e3b014f94e36559e51e478,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2169333683122393918, guid: eabe476e98e3b014f94e36559e51e478,
         type: 3}
@@ -1640,7 +1748,7 @@ PrefabInstance:
     - target: {fileID: 4446510277803551779, guid: 03f4f26af9f00944587094388d41df6f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 222.8
+      value: 222.4
       objectReference: {fileID: 0}
     - target: {fileID: 4446510277803551779, guid: 03f4f26af9f00944587094388d41df6f,
         type: 3}
@@ -2066,6 +2174,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowBridge3
       objectReference: {fileID: 0}
+    - target: {fileID: 6243280423609700834, guid: 6b1b4fe54cbedc44db71c896d8d8f55b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6768706671655537496, guid: 6b1b4fe54cbedc44db71c896d8d8f55b,
         type: 3}
       propertyPath: m_RootOrder
@@ -2283,6 +2396,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueBridge4
       objectReference: {fileID: 0}
+    - target: {fileID: 7281154980548578745, guid: 0e3d3b539823f8a40b6537b7ff406379,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7944362164542396163, guid: 0e3d3b539823f8a40b6537b7ff406379,
         type: 3}
       propertyPath: m_RootOrder
@@ -2366,6 +2484,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlueBridge2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7135608538560627782, guid: 818d2c3bf6bcb784b8634eb1872c35da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7515688111483313916, guid: 818d2c3bf6bcb784b8634eb1872c35da,
         type: 3}
@@ -2495,6 +2618,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlueBridge5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993915542130952959, guid: 30e80e82d9f4ac346a6971bbc65df0dd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30e80e82d9f4ac346a6971bbc65df0dd, type: 3}
@@ -2639,6 +2767,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OrangeBridge1
       objectReference: {fileID: 0}
+    - target: {fileID: 8651104523929539150, guid: f7383fdedb68a534489216026eff8286,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7383fdedb68a534489216026eff8286, type: 3}
 --- !u!1001 &8987143858796094805
@@ -2652,6 +2785,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: YellowBridge4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104744750358238331, guid: f1294898684c8a44c9399eee55ba3880,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8877165256445578945, guid: f1294898684c8a44c9399eee55ba3880,
         type: 3}
@@ -2795,6 +2933,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PurpleBridge5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253026548820384882, guid: f73dde72c820099429ee8b5e879a5480,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8773983251837404872, guid: f73dde72c820099429ee8b5e879a5480,
         type: 3}

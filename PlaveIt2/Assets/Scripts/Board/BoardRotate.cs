@@ -10,6 +10,13 @@ public class BoardRotate : MonoBehaviour
         
     }
 
+    void OnMouseOver()
+    {
+        //change cursor to arrows
+
+
+    }
+
     // Update is called once per frame
     void Update()
     {
