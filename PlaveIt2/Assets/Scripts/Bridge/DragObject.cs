@@ -1,8 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
-using Debug = System.Diagnostics.Debug;
 
 public class DragObject : MonoBehaviour
 {
@@ -11,6 +10,13 @@ public class DragObject : MonoBehaviour
     private float mousePositionX;
     private float mousePositionY;
     private float mousePositionZ;
+    
+    void OnMouseUp()
+    {
+        HoverHighlight HoverHighlightScriptReference = GetComponent<HoverHighlight>();
+        HoverHighlightScriptReference.ResetColor();
+    }
+
     void OnMouseDown()
     {
         objectPosition = transform.position;

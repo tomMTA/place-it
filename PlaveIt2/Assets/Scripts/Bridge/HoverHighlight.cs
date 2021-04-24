@@ -5,22 +5,33 @@ using UnityEngine;
 public class HoverHighlight : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
-    private Color tempColor;
+    private Color originalColor;
 
     // Start is called before the first frame update
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
+        originalColor = meshRenderer.material.color;
     }
 
-    void OnMouseEnter()
+    void OnMouseOver()
     {
-        tempColor = meshRenderer.material.color;
-        meshRenderer.material.color = tempColor + new Color(0.1f, 0.1f, 0.1f);
+        if (!Input.GetMouseButton(0))
+        {
+            meshRenderer.material.color = originalColor + new Color(0.3f, 0.3f, 0.3f);
+        }
     }
     void OnMouseExit()
     {
-        meshRenderer.material.color = tempColor;
+        if (!Input.GetMouseButton(0))
+        {
+           ResetColor();
+        }
+    }
+
+    public void ResetColor()
+    {
+        meshRenderer.material.color = originalColor;
     }
 
     // Update is called once per frame
