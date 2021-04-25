@@ -3,12 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragBridge : MonoBehaviour
+public class DragObject : MonoBehaviour
 {
-	[SerializeField] private float xVelocity = 10f;
-	[SerializeField] private float zVelocity = 10f;
-
-	Vector3 mouseAsWorldPosition;
+    Vector3 mouseAsWorldPosition;
     Vector3 objectPosition;
     private float mousePositionX;
     private float mousePositionY;
@@ -16,37 +13,27 @@ public class DragBridge : MonoBehaviour
     
     void OnMouseUp()
     {
-	    Cursor.visible = true;
-	    HoverHighlight HoverHighlightScriptReference = GetComponent<HoverHighlight>();
+        HoverHighlight HoverHighlightScriptReference = GetComponent<HoverHighlight>();
         HoverHighlightScriptReference.ResetColor();
     }
 
     void OnMouseDown()
     {
-		Cursor.visible = false;
-		//   objectPosition = transform.position;
-		//   mouseAsWorldPosition = Camera.main.WorldToScreenPoint(transform.position);
-		//   mousePositionX = Input.mousePosition.x - mouseAsWorldPosition.x;
-		//   mousePositionZ = Input.mousePosition.y - mouseAsWorldPosition.y;
-		//   mousePositionY = Input.mousePosition.z - mouseAsWorldPosition.z;
-		//mousePositionX = Input.GetAxis("Mouse X");
-		//mousePositionZ = Input.GetAxis("Mouse Y");
-
+        objectPosition = transform.position;
+        mouseAsWorldPosition = Camera.main.WorldToScreenPoint(transform.position);
+        mousePositionX = Input.mousePosition.x - mouseAsWorldPosition.x;
+        mousePositionZ = Input.mousePosition.y - mouseAsWorldPosition.y;
+        mousePositionY = Input.mousePosition.z - mouseAsWorldPosition.z;
     }
 
-	void OnMouseDrag()
+    void OnMouseDrag()
     {
-		//float distanceX = Input.mousePosition.x - mousePositionX;
-		//float distanceY = Input.mousePosition.y - mousePositionZ;
-		//float distanceZ = Input.mousePosition.z - mousePositionY;
-		//Vector3 finalPosition = Camera.main.ScreenToWorldPoint(new Vector3(distanceX, distanceY, distanceZ));
-		//transform.position = new Vector3(finalPosition.x, objectPosition.y, finalPosition.z);
-
-		mousePositionX = Input.GetAxis("Mouse X");
-		mousePositionZ = Input.GetAxis("Mouse Y");
-
-		transform.position += new Vector3(mousePositionX * xVelocity, 0, mousePositionZ * zVelocity);
-	}
+        float distanceX = Input.mousePosition.x - mousePositionX;
+        float distanceY = Input.mousePosition.y - mousePositionZ;
+        float distanceZ = Input.mousePosition.z - mousePositionY;
+        Vector3 finalPosition = Camera.main.ScreenToWorldPoint(new Vector3(distanceX, distanceY, distanceZ));
+        transform.position = new Vector3(finalPosition.x, objectPosition.y, finalPosition.z);
+    }
 
 
     void OnMouseOver()
