@@ -17,14 +17,14 @@ public class DragBridge : MonoBehaviour
 	private static bool isClicked = false;
 	private const float rangeFromBoard = 100;
 	private GameObject gameBoard; //redundant to hold as member? maybe just create to exctract the Vector3?
-	private Vector3 boardPosition; //redundant to hold as member? maybe just create to exctract the Vector3?
+	private Vector3 boardPosition; //redundant to hold as member? maybe just create to calculate the boundaries?
 	private float[] xBounadries = new float[2];
 	private float[] zBoundaries = new float[2];
 
 	void Start()
     {
 		gameBoard = GameObject.Find("GameBoard");
-		MeshRenderer boardRenderer = gameBoard.GetComponentsInChildren<MeshRenderer>()[0]; //plaster - if we add more renderers we need to modify this
+		MeshRenderer boardRenderer = gameBoard.GetComponentsInChildren<MeshRenderer>()[0]; //PLASTER - if we add more renderers we need to modify this
 		boardPosition = boardRenderer.bounds.center;
 		xBounadries[0] = boardPosition.x - rangeFromBoard;
 		xBounadries[1] = boardPosition.x + rangeFromBoard;
