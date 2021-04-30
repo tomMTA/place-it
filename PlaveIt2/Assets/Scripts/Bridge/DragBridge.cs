@@ -24,7 +24,7 @@ public class DragBridge : MonoBehaviour
 	void Start()
     {
 		gameBoard = GameObject.Find("GameBoard");
-		MeshRenderer boardRenderer = gameBoard.GetComponentsInChildren<MeshRenderer>()[0]; //if we add more renderers we need to modify this
+		MeshRenderer boardRenderer = gameBoard.GetComponentsInChildren<MeshRenderer>()[0]; //plaster - if we add more renderers we need to modify this
 		boardPosition = boardRenderer.bounds.center;
 		xBounadries[0] = boardPosition.x - rangeFromBoard;
 		xBounadries[1] = boardPosition.x + rangeFromBoard;
