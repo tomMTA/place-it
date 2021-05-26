@@ -21,7 +21,7 @@ public class SlotsHighlighter : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-	    Debug.DrawRay(transform.position, Vector3.down * 100, Color.white, 0f, true);
+	    Debug.DrawRay(transform.position, Vector3.down * 10000, Color.white, 0f, false);
         //Ray rayLeft = Camera.main.ScreenPointToRay(left.transform.position);
         //Ray rayRight = Camera.main.ScreenPointToRay(right.transform.position);
         RaycastHit hit;
