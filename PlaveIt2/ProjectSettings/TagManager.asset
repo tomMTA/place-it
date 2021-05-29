@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Slot
   - Bridge
+  - GameBoard
+  - HighlightRow
+  - Dummy
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - 
   - Board
   - Bridges
-  - 
+  - HighlightSlot
   - 
   - 
   - 

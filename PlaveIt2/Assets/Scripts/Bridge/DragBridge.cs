@@ -53,15 +53,15 @@ public class DragBridge : MonoBehaviour
 		float newX = transform.position.x + mouseAxisX * xVelocity;
 		float newZ = transform.position.z + mouseAxisY * zVelocity;
 
-		if (!isInXRange(newX))
-		{
-			newX = transform.position.x;
-		}
-		if (!isInZRange(newZ))
-		{
-			newZ = transform.position.z;
-		}
-		transform.position = new Vector3(newX, transform.position.y, newZ);
+        if (!isInXRange(newX))
+        {
+            newX = transform.position.x;
+        }
+        if (!isInZRange(newZ))
+        {
+            newZ = transform.position.z;
+        }
+        transform.position = new Vector3(newX, transform.position.y, newZ);
 
 		if (Input.GetMouseButtonDown(1))
 		{

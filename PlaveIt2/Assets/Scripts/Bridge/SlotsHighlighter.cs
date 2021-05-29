@@ -8,55 +8,41 @@ using UnityEngine;
 public class SlotsHighlighter : MonoBehaviour
 {
     private GameObject currentSlot;
-    //public GameObject left, right;
+    private readonly int k_HighlightSlotLayer = 10;
+    [SerializeField] private LayerMask mask;
+    [SerializeField] private GameObject otherHighlighter;
+    Ray ray;
+    RaycastHit hitInfo;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentSlot = null;
+        ray = new Ray(transform.position, Vector3.down);
     }
         //Debug.Log("LocalPosition: " + this.GetComponent<Transform>().position);
         //Debug.Log("GlobalPosition: " + this.transform.position);
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void debugRays()
     {
-	    Debug.DrawRay(transform.position, Vector3.down * 10000, Color.white, 0f, false);
-        //Ray rayLeft = Camera.main.ScreenPointToRay(left.transform.position);
-        //Ray rayRight = Camera.main.ScreenPointToRay(right.transform.position);
-        RaycastHit hit;
-        Vector3 relativePosition = new Vector3(104.25f, 20f, 0f);
-        //Debug.Log("At " + transform.position); //positions are not compatible - probably hierarchy related
-        if (Physics.Raycast(relativePosition, Vector3.down, out hit, Mathf.Infinity)) //(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit))
+        //for debug--------------------------------------
+        if (Physics.Raycast(ray, out hitInfo))
         {
-            if (hit.collider != null)
-            {
-                GameObject hitReceiver = hit.collider.gameObject;
-                Debug.Log(hitReceiver.transform.tag);
-                if (hitReceiver.tag == "Slot" && hitReceiver != currentSlot)
-                {
-	                Debug.Log("Hit slot at " + hitReceiver.transform.position + "!");
-                    if (currentSlot != null)
-                    {
-                        currentSlot.GetComponent<MeshRenderer>().enabled = false;
-                    }
-                    hitReceiver.GetComponent<MeshRenderer>().enabled = false;
-                    currentSlot = hitReceiver;
-                }
-                if (hitReceiver == null)
-                    Debug.Log("no object obtained from hit collider");
-            }
-            else
-                Debug.Log("no collider detcted");
+            Debug.DrawLine(ray.origin, hitInfo.point, Color.red);
         }
-        else Debug.Log("no object returned from RayCast");
-
-        /*if (Physics.Raycast(rayRight, out hit, 1000f)) //(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit))
+        else
         {
-            if (hit.collider != null)
+            Debug.DrawLine(ray.origin, ray.origin + ray.direction * 100, Color.green);
+        }
+    }
+
+    void highlightSlots()
+    {
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            if (hitInfo.collider != null)
             {
-                GameObject hitReceiver = hit.collider.gameObject;
-                if (hitReceiver.tag == "Slot" && hitReceiver != currentSlot)
+                GameObject hitReceiver = hitInfo.collider.gameObject;
+                if (hitReceiver.layer == k_HighlightSlotLayer && hitReceiver != currentSlot)
                 {
                     if (currentSlot != null)
                     {
@@ -65,12 +51,23 @@ public class SlotsHighlighter : MonoBehaviour
                     hitReceiver.GetComponent<MeshRenderer>().enabled = true;
                     currentSlot = hitReceiver;
                 }
-                if (hitReceiver == null)
-                    Debug.Log("no object obtained from hit collider");
             }
-            else
-                Debug.Log("no collider detcted");
         }
-        else Debug.Log("no object returned from RayCast");*/
+        else
+        {
+            if (currentSlot != null)
+            {
+                currentSlot.GetComponent<MeshRenderer>().enabled = false;
+            }
+            currentSlot = null;
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        ray.origin = transform.position;
+        //debugRays();
+        highlightSlots();
     }
 }
