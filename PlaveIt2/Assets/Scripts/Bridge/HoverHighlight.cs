@@ -33,10 +33,4 @@ public class HoverHighlight : MonoBehaviour
     {
         meshRenderer.material.color = originalColor;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

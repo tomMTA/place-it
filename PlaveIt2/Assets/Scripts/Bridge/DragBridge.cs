@@ -8,21 +8,26 @@ public class DragBridge : MonoBehaviour
 {
 	[SerializeField] private float xVelocity = 7f;
 	[SerializeField] private float zVelocity = 10f;
-
+	private SlotsHighlighter slotsHighlighter;
 	Vector3 mouseAsWorldPosition;
 	Vector3 objectPosition;
 	private float mouseAxisX;
 	private float mousePositionY;
 	private float mouseAxisY;
 	private static bool isClicked = false;
+	private bool m_IsTilted;
 	private const float rangeFromBoard = 100;
 	private GameObject gameBoard; //redundant to hold as member? maybe just create to exctract the Vector3?
 	private Vector3 boardPosition; //redundant to hold as member? maybe just create to calculate the boundaries?
 	private float[] xBounadries = new float[2];
 	private float[] zBoundaries = new float[2];
+	public delegate void TiltedHandler();
+	public event TiltedHandler Tilted;
 
 	void Start()
     {
+		slotsHighlighter = transform.GetChild(0).GetComponent<SlotsHighlighter>();
+		m_IsTilted = false;
 		gameBoard = GameObject.Find("GameBoard");
 		MeshRenderer boardRenderer = gameBoard.GetComponentsInChildren<MeshRenderer>()[0]; //PLASTER - if we add more renderers we need to modify this
 		boardPosition = boardRenderer.bounds.center;
@@ -31,6 +36,11 @@ public class DragBridge : MonoBehaviour
 		zBoundaries[0] = boardPosition.z - rangeFromBoard;
 		zBoundaries[1] = boardPosition.z + rangeFromBoard;
 	}
+
+	public bool IsTilted
+    {
+        get { return m_IsTilted; }
+    }
 
 	void OnMouseUp()
 	{
@@ -48,30 +58,33 @@ public class DragBridge : MonoBehaviour
 
 	void OnMouseDrag()
 	{
-		mouseAxisX = Input.GetAxis("Mouse X");
-		mouseAxisY = Input.GetAxis("Mouse Y");
-		float newX = transform.position.x + mouseAxisX * xVelocity;
-		float newZ = transform.position.z + mouseAxisY * zVelocity;
-
-        if (!isInXRange(newX))
-        {
-            newX = transform.position.x;
-        }
-        if (!isInZRange(newZ))
-        {
-            newZ = transform.position.z;
-        }
-        transform.position = new Vector3(newX, transform.position.y, newZ);
-
-		if (Input.GetMouseButtonDown(1))
+		if (enabled)
 		{
-			Rotate90Degree();
+			mouseAxisX = Input.GetAxis("Mouse X");
+			mouseAxisY = Input.GetAxis("Mouse Y");
+			float newX = transform.position.x + mouseAxisX * xVelocity;
+			float newZ = transform.position.z + mouseAxisY * zVelocity;
+
+			if (!isInXRange(newX))
+			{
+				newX = transform.position.x;
+			}
+			if (!isInZRange(newZ))
+			{
+				newZ = transform.position.z;
+			}
+			transform.position = new Vector3(newX, transform.position.y, newZ);
+
+			if (Input.GetMouseButtonDown(1))
+			{
+				Rotate90Degree();
+			}
 		}
 	}
 
 	void OnMouseOver()
 	{
-		if (!isClicked && Input.GetMouseButtonDown(1))
+		if (enabled && !isClicked && Input.GetMouseButtonDown(1))
 		{
 			Rotate90Degree();
 		}
@@ -79,7 +92,10 @@ public class DragBridge : MonoBehaviour
 
 	private void Rotate90Degree()
 	{
-		transform.rotation *= Quaternion.Euler(0, 0, 90f);
+		Tilted.Invoke();
+		m_IsTilted = !m_IsTilted;
+		transform.eulerAngles = new Vector3(transform.eulerAngles.x, 90 - transform.eulerAngles.y, transform.eulerAngles.z);
+		//slotsHighlighter.IsTilted = m_IsTilted;
 	}
 
 	//improve performance - calculate posToVerify once
