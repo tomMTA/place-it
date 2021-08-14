@@ -43,7 +43,7 @@ public class SlotManager : MonoBehaviour
 
     public int HeightInside
     {
-        get { return m_BridgeInside == null ? 0 : m_BridgeInside.GetComponent<BridgePlacement>().Height; }
+        get { return m_BridgeInside == null ? 0 : m_BridgeInside.Height; }
     }
 
     public Bridge BridgeInside

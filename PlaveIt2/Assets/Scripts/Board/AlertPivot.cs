@@ -13,6 +13,7 @@ public class AlertPivot : MonoBehaviour
     void Start()
     {
         boardRotateScript = transform.parent.GetComponent<BoardRotate>();
+        //boardRotateScript = GameObject.Find("Main Camera").GetComponent<CameraRotation>();
     }
 
     void OnMouseOver()

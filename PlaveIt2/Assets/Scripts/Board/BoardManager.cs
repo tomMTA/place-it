@@ -9,6 +9,8 @@ public class BoardManager : MonoBehaviour
     private const string m_ExceptionMessage = "You can't place it here!";
     private bool m_IsRotated;
     private bool m_IsRotating;
+    public delegate void TiltedHandler();
+    public TiltedHandler Tilted;
 
     // Start is called before the first frame update
     void Start()
@@ -28,9 +30,18 @@ public class BoardManager : MonoBehaviour
             }
         }
     }
+    public bool IsRotated
+    {
+        get { return m_IsRotated; }
+    }
 
     private bool isInSameRange(Bridge i_Bridge1, Bridge i_Bridge2)
     {
+        if (!i_Bridge1 || !i_Bridge2)
+        {
+            return false;
+        }
+
         DragBridge dragBridge1 = i_Bridge1.transform.GetComponent<DragBridge>();
         DragBridge dragBridge2 = i_Bridge2.transform.GetComponent<DragBridge>();
 
@@ -62,15 +73,59 @@ public class BoardManager : MonoBehaviour
         return (start1 < start2 && end1 > start2 && end1 < end2) || (start1 < end2 && end1 > end2);
     }
 
-    public void PlaceBridge(SlotManager i_LeftSlot, Bridge i_Bridge)
+    private void incRowAndCol(bool i_IsBridgeTilted, int i_AmountToInc, ref int io_currentToNextRow, ref int io_CurrentToNextCol)
+    {
+        if (i_IsBridgeTilted && !m_IsRotated)
+        {
+            //Debug.Log("Bridge Tilted, Board not");
+            io_currentToNextRow += i_AmountToInc;
+        }
+        else if (!i_IsBridgeTilted && m_IsRotated)
+        {
+            //Debug.Log("Board Tilted, Bridge not");
+            io_currentToNextRow -= i_AmountToInc;
+        }
+        else
+        {
+            io_CurrentToNextCol += i_AmountToInc;
+        }
+    }
+
+    /*public SlotManager PlaceBridge(SlotManager i_LeftSlot, Bridge i_Bridge)
     {
         int startRow = i_LeftSlot.Row;
         int startCol = i_LeftSlot.Col;
         int bridgeWidth = i_Bridge.SpacesOccupies;
         int bridgeHeight = i_Bridge.Height;
+        SlotManager rightSlot;
+
         TurnOffSlots(i_LeftSlot, i_Bridge);
-        placeBridge(startRow, startCol, i_Bridge, bridgeHeight, bridgeWidth, i_Bridge.IsTilted);
+        //Debug.Log("inserted bridge " + i_Bridge.Id + ", there are " + m_BridgesInside.Count + " bridges in the board");
+        rightSlot = placeBridge(startRow, startCol, i_Bridge, bridgeHeight, bridgeWidth, i_Bridge.IsTilted);
         m_BridgesInside.Add(i_Bridge.Id, i_Bridge);
+
+        return rightSlot;
+    }*/
+
+    public void PlaceBridge(Bridge i_Bridge)
+    {
+        SlotManager leftSlot = i_Bridge.LeftSlot;
+        SlotManager rightSlot = i_Bridge.RightSlot;
+        SlotManager currentSlot = leftSlot;
+
+        if (leftSlot && rightSlot)
+        {
+            leftSlot.TurnOff();
+            rightSlot.TurnOff();
+            leftSlot.BridgeEnter(i_Bridge);
+            rightSlot.BridgeEnter(i_Bridge);
+            m_BridgesInside.Add(i_Bridge.Id, i_Bridge);
+            while (currentSlot != null)
+            {
+                currentSlot.HeightsAbove.Add(i_Bridge.Height);
+                currentSlot = getNextSlot(currentSlot, rightSlot);
+            }
+        }
     }
 
     //A different way:
@@ -78,13 +133,17 @@ public class BoardManager : MonoBehaviour
     //2. in placeBridge, simply make sure that SlotManager.BridgeAbove == i_Bridge (or contains)
 
     //TODO: fix the direction of the bridge in place/pull bridge (tilted,rotated wise)
-    private void placeBridge(int i_StartRow, int i_StartCol, Bridge i_Bridge, int i_BridgeHeight, int i_BridgeWidth, bool i_IsTilted)
+    /*private SlotManager placeBridge(int i_StartRow, int i_StartCol, Bridge i_Bridge, int i_BridgeHeight, int i_BridgeWidth, bool i_IsTilted)
     {
+        SlotManager rightSlot;
         SlotManager currentSlotManager = m_SlotManagers[i_StartRow - 1, i_StartCol - 1];
         Bridge bridgeInside = currentSlotManager.BridgeInside;
         //DragBridge bridgeToPlace = i_Bridge.GetComponent<DragBridge>();
-        bool isSameRange = bridgeInside && isInSameRange(i_Bridge, bridgeInside);
+        bool isSameRange = isInSameRange(i_Bridge, bridgeInside);
         bool isHeightCollision = currentSlotManager.HeightInside >= i_BridgeHeight;
+
+        //Debug.Log("(" + currentSlotManager.Row + ", " + currentSlotManager.Col + ")");
+
 
         //check that no other bridges collides in or above this slot
         if (isSameRange || isHeightCollision)
@@ -94,7 +153,7 @@ public class BoardManager : MonoBehaviour
 
         foreach (int height in currentSlotManager.HeightsAbove)
         {
-            Debug.Log(height);
+            //Debug.Log(height);
             if (height == i_BridgeHeight)
             {
                 throw new System.Exception(m_ExceptionMessage);
@@ -103,15 +162,21 @@ public class BoardManager : MonoBehaviour
 
         //check recursively
         if (i_BridgeWidth != 1)
-        {
-            if (i_IsTilted)
+        {//respect board's state
+            incRowAndCol(i_Bridge.IsTilted, 1, ref i_StartRow, ref i_StartCol);
+            rightSlot = placeBridge(i_StartRow, i_StartCol, i_Bridge, i_BridgeHeight, i_BridgeWidth - 1, i_IsTilted);
+            *//*if (i_IsTilted)
             {
                 placeBridge(i_StartRow + 1, i_StartCol, i_Bridge, i_BridgeHeight, i_BridgeWidth - 1, i_IsTilted);
             }
             else
             {
                 placeBridge(i_StartRow, i_StartCol + 1, i_Bridge, i_BridgeHeight, i_BridgeWidth - 1, i_IsTilted);
-            }
+            }*//*
+        }
+        else
+        {
+            rightSlot = currentSlotManager;
         }
 
         //update slots
@@ -124,41 +189,103 @@ public class BoardManager : MonoBehaviour
             }
             currentSlotManager.BridgeEnter(i_Bridge);
         }
-    }
 
-    public void PullOutBridge(SlotManager i_LeftSlot, Bridge i_Bridge)
+        return rightSlot;
+    }*/
+
+    private SlotManager getNextSlot(SlotManager i_Current, SlotManager i_Last)
     {
-        int bridgeWidth = i_Bridge.SpacesOccupies;
-        int leftRow = i_LeftSlot.Row;
-        int leftCol = i_LeftSlot.Col;
-        int firstIterationSlot, lastIterationSlot;
-        bool isTilted = i_Bridge.IsTilted;
-        SlotManager currentSlotManager;
-        
-        if (isTilted)
+        if (i_Last.Row > i_Current.Row)
         {
-            firstIterationSlot = i_LeftSlot.Row;
+            return m_SlotManagers[i_Current.Row, i_Current.Col - 1];
+        }
+        else if (i_Last.Row < i_Current.Row)
+        {
+            return m_SlotManagers[i_Current.Row - 2, i_Current.Col - 1];
+        }
+        else if (i_Last.Col > i_Current.Col)
+        {
+            return m_SlotManagers[i_Current.Row - 1, i_Current.Col];
+        }
+        else if (i_Last.Col < i_Current.Col)
+        {
+            return m_SlotManagers[i_Current.Row - 1, i_Current.Col - 2];
         }
         else
         {
-            firstIterationSlot = i_LeftSlot.Col;
+            return null;
+        }
+    }
+
+    public void PullOutBridge(Bridge i_Bridge)
+    {
+        SlotManager currentSlotManager = i_Bridge.LeftSlot;
+        SlotManager lastSlotManager = i_Bridge.RightSlot;
+
+
+        //Debug.Log("(" + currentSlotManager.Row + ", " + currentSlotManager.Col + ")");
+
+        currentSlotManager.BridgeLeave();
+        do
+        {
+            currentSlotManager.HeightsAbove.Remove(i_Bridge.Height);
+            currentSlotManager = getNextSlot(currentSlotManager, lastSlotManager);
+        }
+        while (currentSlotManager != null);
+
+        lastSlotManager.BridgeLeave();
+        m_BridgesInside.Remove(i_Bridge.Id);
+        //i_Bridge.LeftSlot.TurnOn();
+        //i_Bridge.RightSlot.TurnOn();
+    }
+
+    /*public void PullOutBridge(SlotManager i_StartSlot, Bridge i_Bridge)
+    {
+        int bridgeWidth = i_Bridge.SpacesOccupies;
+        int currentRow = i_StartSlot.Row;
+        int currentCol = i_StartSlot.Col;
+        int endRow = currentRow, endCol = currentCol;
+        int firstIterationSlot, lastIterationSlot;
+        bool isTilted = i_Bridge.IsTilted;
+        SlotManager currentSlotManager;
+
+        m_SlotManagers[currentRow - 1, currentCol - 1].BridgeLeave();
+        incRowAndCol(isTilted, bridgeWidth - 1, ref endRow, ref endCol);
+        while (currentRow != endRow || currentCol != endCol)
+        {
+            Debug.Log("Taking care of slot (" + currentRow + ", " + currentCol + ")");
+            currentSlotManager = m_SlotManagers[currentRow - 1, currentCol - 1];
+            currentSlotManager.HeightsAbove.Remove(i_Bridge.Height);
+            incRowAndCol(isTilted, 1, ref currentRow, ref currentCol);
+        }
+
+        m_SlotManagers[currentRow - 1, currentCol - 1].BridgeLeave();
+
+        *//*if (isTilted)
+        {
+            firstIterationSlot = i_StartSlot.Row;
+        }
+        else
+        {
+            firstIterationSlot = i_StartSlot.Col;
         }
 
         lastIterationSlot = firstIterationSlot + bridgeWidth - 1;
         for (int i = firstIterationSlot; i <= lastIterationSlot; i++)
         {
-            currentSlotManager = isTilted ? m_SlotManagers[i - 1, leftCol - 1] : m_SlotManagers[leftRow - 1, i - 1];
+            currentSlotManager = isTilted ? m_SlotManagers[i - 1, currentCol - 1] : m_SlotManagers[currentRow - 1, i - 1];
             if (i == firstIterationSlot || i == lastIterationSlot)
             {
                 currentSlotManager.BridgeLeave();
             }
 
             currentSlotManager.HeightsAbove.Remove(i_Bridge.Height);
-        }
+        }*//*
 
-        TurnOnSlots(i_LeftSlot, i_Bridge);
+        TurnOnSlots(i_StartSlot, i_Bridge);
         m_BridgesInside.Remove(i_Bridge.Id);
-    }
+        Debug.Log("removed bridge " + i_Bridge.Id + ", there are " + m_BridgesInside.Count + " bridges in the board");
+    }*/
 
     private bool isInBoardRange(int endRow, int endCol)
     {
@@ -166,22 +293,101 @@ public class BoardManager : MonoBehaviour
             && endCol >= 1 && endCol <= 9;
     }
 
-    public void TurnOnSlots(SlotManager i_LeftSlot, Bridge i_BridgeAbove)
+    private bool isHeightsCollision(int i_BridgeHeight, SlotManager i_Slot)
     {
+        bool isCollision = false;
+        Bridge bridgeInside = i_Slot.BridgeInside;
+
+        if (bridgeInside && i_BridgeHeight <= bridgeInside.Height)
+        {
+            isCollision = true;
+        }
+        else
+        {
+            foreach (int height in i_Slot.HeightsAbove)
+            {
+                if (height == i_BridgeHeight)
+                {
+                    isCollision = true;
+                    break;
+                }
+            }
+        }
+
+        return isCollision;
+    }
+
+    private bool isLowerBridgeAboveSlot(int i_BridgeHeight, SlotManager i_Slot)
+    {
+        bool isThere = false;
+
+        foreach (int height in i_Slot.HeightsAbove)
+        {
+            if (height <= i_BridgeHeight)
+            {
+                isThere = true;
+                break;
+            }
+        }
+
+        return isThere;
+    }
+
+    private bool canBridgeBeAboveSlot(Bridge i_Bridge, SlotManager i_Slot)
+    {
+        Bridge bridgeInside = i_Slot.BridgeInside;
+
+        return !isInSameRange(i_Bridge, bridgeInside) && !isHeightsCollision(i_Bridge.Height, i_Slot);
+    }
+
+    private bool isPossibleToPlace(SlotManager i_LeftSlot, SlotManager i_RightSlot, Bridge i_Bridge)
+    {
+        bool isPossibleToPlace = true;
+        int bridgeHeight = i_Bridge.Height;
+
+        if (!i_LeftSlot.IsFree() || !i_RightSlot.IsFree() || isLowerBridgeAboveSlot(bridgeHeight, i_LeftSlot) || isLowerBridgeAboveSlot(bridgeHeight, i_RightSlot))
+        {
+            isPossibleToPlace = false;
+        }
+        else
+        {
+            SlotManager currentSlotManager = i_LeftSlot;
+            Bridge bridgeInside;
+
+            do
+            {
+                bridgeInside = currentSlotManager.BridgeInside;
+                if (!canBridgeBeAboveSlot(i_Bridge, currentSlotManager))
+                {
+                    isPossibleToPlace = false;
+                    break;
+                }
+
+                currentSlotManager = getNextSlot(currentSlotManager, i_RightSlot);
+            }
+            while (currentSlotManager);
+        }
+
+        return isPossibleToPlace;
+    }
+
+    public SlotManager TurnOnSlots(SlotManager i_LeftSlot, Bridge i_BridgeAbove)
+    {
+        SlotManager rightSlot = null;
+
         if (!m_IsRotating)
         {
             int endRow = i_LeftSlot.Row;
             int endCol = i_LeftSlot.Col;
-            SlotManager rightSlot;
 
             if (i_BridgeAbove.IsTilted && !m_IsRotated)
             {
-                Debug.Log("Bridge Tilted, Board not");
+                //Debug.Log("Bridge Tilted, Board not");
                 endRow += i_BridgeAbove.SpacesOccupies - 1;
             }
             else if (!i_BridgeAbove.IsTilted && m_IsRotated)
             {
-                Debug.Log("Board Tilted, Bridge not");
+                //Debug.Log("Board Tilted, Bridge not");
                 endRow -= i_BridgeAbove.SpacesOccupies - 1;
             }
             else
@@ -194,10 +400,19 @@ public class BoardManager : MonoBehaviour
             if (isInBoardRange(endRow, endCol))
             {
                 rightSlot = m_SlotManagers[endRow - 1, endCol - 1];
-                i_LeftSlot.TurnOn();
-                rightSlot.TurnOn();
+                if (isPossibleToPlace(i_LeftSlot, rightSlot, i_BridgeAbove))
+                {
+                    i_LeftSlot.TurnOn();
+                    rightSlot.TurnOn();
+                }
+                else
+                {
+                    rightSlot = null;
+                }
             }
         }
+
+        return rightSlot;
     }
 
     public void TurnOffSlots(SlotManager i_LeftSlot, Bridge i_BridgeAbove)
@@ -208,12 +423,12 @@ public class BoardManager : MonoBehaviour
 
         if (i_BridgeAbove.IsTilted && !m_IsRotated)
         {
-            Debug.Log("Bridge Tilted, Board not");
+            //Debug.Log("Bridge Tilted, Board not");
             endRow += i_BridgeAbove.SpacesOccupies - 1;
         }
         else if (!i_BridgeAbove.IsTilted && m_IsRotated)
         {
-            Debug.Log("Board Tilted, Bridge not");
+            //Debug.Log("Board Tilted, Bridge not");
             endRow -= i_BridgeAbove.SpacesOccupies - 1;
         }
         else
@@ -231,7 +446,7 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    public void TurnOnSlot(int i_Row, int i_Col)
+    /*public void TurnOnSlot(int i_Row, int i_Col)
     {
         m_SlotManagers[i_Row - 1, i_Col - 1].TurnOn();
     }
@@ -239,7 +454,16 @@ public class BoardManager : MonoBehaviour
     public void TurnOffSlot(int i_Row, int i_Col)
     {
         m_SlotManagers[i_Row - 1, i_Col - 1].TurnOff();
-    }
+    }*/
+
+    /*private void tiltBridges()
+    {
+        foreach (Bridge bridge in m_BridgesInside.Values)
+        {
+            bridge.Tilt*
+            Debug.Log("Tilted bridge " + bridge.Id);
+        }
+    }*/
 
     protected void OnRotationStart()
     {
@@ -253,17 +477,12 @@ public class BoardManager : MonoBehaviour
         {
             case "A":
                 m_IsRotated = false;
-                Debug.Log("Side A");
+                //Debug.Log("Side A");
                 break;
             case "B":
                 m_IsRotated = true;
-                Debug.Log("Side B");
+                //Debug.Log("Side B");
                 break;
-        }
-
-        foreach (Bridge bridge in m_BridgesInside.Values)
-        {
-            bridge.IsTilted = !bridge.IsTilted;
         }
     }
 

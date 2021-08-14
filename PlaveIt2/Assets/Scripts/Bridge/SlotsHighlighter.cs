@@ -109,7 +109,7 @@ public class SlotsHighlighter : MonoBehaviour
         }*/
     }
 
-    private void turnOnSlots()
+   /* private void turnOnSlots()
     {
         SlotManager currentSlotManager = CurrentSlotManager;
         DragBridge dragBridge = transform.parent.GetComponent<DragBridge>();
@@ -130,10 +130,10 @@ public class SlotsHighlighter : MonoBehaviour
         if (otherRow <= 9 && otherCol <= 9)
         {
             //HoveredAboveSlot.Invoke(currentSlotManager.Row, currentSlotManager.Col, otherRow, otherCol);
-            /*currentSlotManager.TurnOn();
-            m_BoardManager.TurnOnSlot(otherRow, otherCol);*/
+            *//*currentSlotManager.TurnOn();
+            m_BoardManager.TurnOnSlot(otherRow, otherCol);*//*
         }
-    }
+    }*/
 
     // Update is called once per frame
     void FixedUpdate()

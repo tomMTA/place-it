@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -81,8 +81,8 @@ public class BridgePlacement : MonoBehaviour
             Vector3 plainDifference = new Vector3(differenceVector.x, 0, differenceVector.z);
 
             transform.SetParent(GameObject.Find("GameBoard").transform);
-            /*slotsHighlighter1.EnterSlot(this.gameObject);
-            slotsHighlighter2.EnterSlot(this.gameObject);*/
+            *//*slotsHighlighter1.EnterSlot(this.gameObject);
+            slotsHighlighter2.EnterSlot(this.gameObject);*//*
             slotsHighlighter1.enabled = false;
             //slotsHighlighter2.enabled = false;
             m_OriginalPosition = transform.position;
@@ -93,9 +93,9 @@ public class BridgePlacement : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            /*MessageBoxManager mbm = GameObject.Find("MessageBox").GetComponent<MessageBoxManager>();
+            *//*MessageBoxManager mbm = GameObject.Find("MessageBox").GetComponent<MessageBoxManager>();
             mbm.ShowText("hi");
-            mbm.ShowText(e.ToString);*/
+            mbm.ShowText(e.ToString);*//*
         }
     }
 
@@ -117,7 +117,7 @@ public class BridgePlacement : MonoBehaviour
     }
 
     //old way
-    /*void OnCollisionEnter(Collision collision)
+    *//*void OnCollisionEnter(Collision collision)
     {
         Vector3 differenceVector = transform.GetComponentInChildren<SlotsHighlighter>().GetDifferenceVector();
         rigidbody.useGravity = false;
@@ -126,5 +126,6 @@ public class BridgePlacement : MonoBehaviour
         isInSlot = true;
         isInMotion = false;
         //rigidbody.velocity = Vector3.zero;
-    }*/
+    }*//*
 }
+*/

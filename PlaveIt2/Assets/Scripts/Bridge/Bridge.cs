@@ -10,6 +10,7 @@ public class Bridge : MonoBehaviour
 
     private SlotsHighlighter m_SlotsHighlighter;
     private SlotManager m_LeftSlot = null;
+    private SlotManager m_RightSlot = null;
     private float bridgeAngle = 5f;
     private BoardManager m_Board;
     public Transform m_Bridge;
@@ -22,6 +23,7 @@ public class Bridge : MonoBehaviour
     bool m_IsInSlot;
     bool m_IsInPlacement;
     bool m_IsTilted;
+    bool m_IsBoardRotated;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,7 @@ public class Bridge : MonoBehaviour
         m_SlotsHighlighter.HoveredAboveSlot += HighlightSlots;
         m_SlotsHighlighter.LeftAboveSlot += UnHighlightSlots;
         GetComponent<DragBridge>().Tilted += OnTilted;
+        m_Board.Tilted += OnTilted;
     }
 
     // Update is called once per frame
@@ -61,7 +64,7 @@ public class Bridge : MonoBehaviour
 
     protected void HighlightSlots(SlotManager i_LeftSlow)
     {
-        m_Board.TurnOnSlots(i_LeftSlow, this);
+        m_RightSlot = m_Board.TurnOnSlots(i_LeftSlow, this);
         m_LeftSlot = i_LeftSlow;
     }
 
@@ -92,19 +95,52 @@ public class Bridge : MonoBehaviour
         set { m_IsTilted = value; }
     }
 
+    public SlotManager LeftSlot
+    {
+        get { return m_LeftSlot; }
+    }
+
+    public SlotManager RightSlot
+    {
+        get { return m_RightSlot; }
+    }
+
+    private void rotate90Degrees()
+    {
+        int newYAngle = transform.eulerAngles.y == 180 ? 270 : 180;
+
+        m_IsTilted = !m_IsTilted;
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, newYAngle, transform.eulerAngles.z);
+    }
+
     void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(2))
         {
+            //Debug.Log((m_IsInSlot ? "inside. " : "not inside. ") + (m_IsInPlacement ? "in placement." : "not in placement"));
             if (m_IsInSlot)
             {
                 returnUp();
             }
-            else
+            else if (m_LeftSlot && m_RightSlot)
             {
                 setForPlacementIfPossible();
             }
         }
+
+        if (!m_IsInSlot && Input.GetMouseButtonDown(1))
+        {
+            Tilt();
+        }
+    }
+
+    public void Tilt()
+    {
+        if (m_LeftSlot)
+        {
+            UnHighlightSlots(m_LeftSlot);
+        }
+        rotate90Degrees();
     }
 
     protected void OnTilted()
@@ -112,14 +148,16 @@ public class Bridge : MonoBehaviour
         if (m_LeftSlot)
         {
             UnHighlightSlots(m_LeftSlot);
+            rotate90Degrees();
         }
-        m_IsTilted = !m_IsTilted;
     }
 
     private void moveToSlot()
     {
+        const float deviation = 0.00001f;
+
         transform.position = Vector3.MoveTowards(transform.position, m_SlotsTarget, Time.deltaTime * k_PlacementSpeed);
-        if (transform.position.y <= m_SlotsTarget.y)
+        if (transform.position.y <= m_SlotsTarget.y + deviation)
         {
             m_IsInPlacement = false;
             m_IsInSlot = true;
@@ -130,7 +168,9 @@ public class Bridge : MonoBehaviour
     {
         //try
         {
-            m_Board.PlaceBridge(m_SlotsHighlighter.CurrentSlotManager, this);
+            m_IsBoardRotated = m_Board.IsRotated;
+            //m_LeftSlot = m_SlotsHighlighter.CurrentSlotManager;
+            m_Board.PlaceBridge(this);
             Vector3 differenceVector = m_SlotsHighlighter.GetDifferenceVector();
             Vector3 plainDifference = new Vector3(differenceVector.x, 0, differenceVector.z);
 
@@ -154,11 +194,21 @@ public class Bridge : MonoBehaviour
     {
         SlotManager currentSlotManager = m_SlotsHighlighter.CurrentSlotManager;
 
+        if (m_Board.IsRotated != m_IsBoardRotated)
+        {
+            m_IsTilted = !m_IsTilted;
+            if (m_Board.IsRotated ^ m_IsTilted)
+            {
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 180, transform.eulerAngles.z);
+            }
+        }
+
         transform.parent = m_OriginalParent;
         transform.position = m_OriginalPosition;
         transform.GetComponent<DragBridge>().enabled = true;
         m_SlotsHighlighter.enabled = true;
-        m_Board.PullOutBridge(currentSlotManager, this);
+        m_Board.PullOutBridge(this);
+        //Debug.Log("Curr IsRotated = " + m_Board.IsRotated + " prev IsRotated = " + m_IsBoardRotated);
         m_IsInSlot = false;
     }
 }
