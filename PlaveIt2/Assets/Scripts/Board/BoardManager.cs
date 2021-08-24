@@ -70,7 +70,7 @@ public class BoardManager : MonoBehaviour
         end1 = start1 + width1 - 1;
         end2 = start2 + width2 - 1;
 
-        return (start1 < start2 && end1 > start2 && end1 < end2) || (start1 < end2 && end1 > end2);
+        return (start1 < start2 && end1 > start2 && end1 < end2) || (start1 > start2 && start1 < end2 && end1 > end2);
     }
 
     private void incRowAndCol(bool i_IsBridgeTilted, int i_AmountToInc, ref int io_currentToNextRow, ref int io_CurrentToNextCol)
@@ -329,7 +329,6 @@ public class BoardManager : MonoBehaviour
                 break;
             }
         }
-
         return isThere;
     }
 

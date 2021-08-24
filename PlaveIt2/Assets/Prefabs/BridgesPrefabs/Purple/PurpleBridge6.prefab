@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7876481599149039710}
   m_Layer: 0
   m_Name: PurpleBridge6
-  m_TagString: Untagged
+  m_TagString: Purple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -9,6 +9,10 @@ TagManager:
   - GameBoard
   - HighlightRow
   - Dummy
+  - Blue
+  - Yellow
+  - Orange
+  - Purple
   layers:
   - Default
   - TransparentFX

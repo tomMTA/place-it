@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2243186510843464470}
   m_Layer: 0
   m_Name: OrangeBridge6
-  m_TagString: Untagged
+  m_TagString: Orange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
