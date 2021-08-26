@@ -6,6 +6,7 @@ public class Bridge : MonoBehaviour
 {
     [SerializeField] public int m_Height;
     [SerializeField] public int m_SpacesOccupies;
+    [SerializeField] public eColor m_Color;
     [SerializeField] public int m_Id;
 
     private SlotsHighlighter m_SlotsHighlighter;
@@ -82,6 +83,11 @@ public class Bridge : MonoBehaviour
     public int SpacesOccupies
     {
         get { return m_SpacesOccupies; }
+    }
+
+    public eColor Color
+    {
+        get { return m_Color; }
     }
 
     public int Id

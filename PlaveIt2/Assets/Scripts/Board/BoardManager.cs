@@ -9,6 +9,8 @@ public class BoardManager : MonoBehaviour
     private const string m_ExceptionMessage = "You can't place it here!";
     private bool m_IsRotated;
     private bool m_IsRotating;
+    private SideObserver m_SideAObserver;
+    private SideObserver m_SideBObserver;
     public delegate void TiltedHandler();
     public TiltedHandler Tilted;
 
@@ -17,6 +19,8 @@ public class BoardManager : MonoBehaviour
     {
         m_IsRotated = false;
         m_IsRotating = false;
+        m_SideAObserver = new SideObserver("12", eSide.A);
+        m_SideBObserver = new SideObserver("12", eSide.B);
         AlertPivot alertPivot = GetComponent<AlertPivot>();
         alertPivot.RotationStarted += OnRotationStart;
         alertPivot.RotationStopped += OnRotationStop;

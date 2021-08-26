@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SideObservationsComparer : MonoBehaviour
 {
-    private SideObservation m_Solution, m_CurrentState;
+    private SideObserver m_Solution, m_CurrentState;
     private int differences;
 
-    public SideObservationsComparer(SideObservation i_Solution)
+    public SideObservationsComparer(SideObserver i_Solution)
     {
         m_Solution = i_Solution;
         countInitialDifferences();

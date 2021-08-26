@@ -203,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Height: 4
   m_SpacesOccupies: 3
+  m_Color: 4
   m_Id: 19
   m_Bridge: {fileID: 0}
   bridgeRotationSpeed: 10
