@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour
 {
@@ -123,12 +124,19 @@ public class BoardManager : MonoBehaviour
             rightSlot.TurnOff();
             leftSlot.BridgeEnter(i_Bridge);
             rightSlot.BridgeEnter(i_Bridge);
+            m_SideAObserver.BridgeEnter(leftSlot.Row - 1, rightSlot.Row - 1, leftSlot.Col - 1, rightSlot.Col - 1, i_Bridge.Height - 1, i_Bridge.Color);
+            m_SideBObserver.BridgeEnter(leftSlot.Row - 1, rightSlot.Row - 1, leftSlot.Col - 1, rightSlot.Col - 1, i_Bridge.Height - 1, i_Bridge.Color);
             m_BridgesInside.Add(i_Bridge.Id, i_Bridge);
             while (currentSlot != null)
             {
                 currentSlot.HeightsAbove.Add(i_Bridge.Height);
                 currentSlot = getNextSlot(currentSlot, rightSlot);
             }
+        }
+
+        if (m_SideAObserver.Differences == 0 && m_SideBObserver.Differences == 0)
+        {
+            GameObject.Find("Congratulations").GetComponent<Image>().enabled = true;
         }
     }
 
@@ -223,8 +231,10 @@ public class BoardManager : MonoBehaviour
 
     public void PullOutBridge(Bridge i_Bridge)
     {
-        SlotManager currentSlotManager = i_Bridge.LeftSlot;
-        SlotManager lastSlotManager = i_Bridge.RightSlot;
+        SlotManager leftSlot = i_Bridge.LeftSlot;
+        SlotManager rightSlot = i_Bridge.RightSlot;
+        SlotManager currentSlotManager = leftSlot;
+        SlotManager lastSlotManager = rightSlot;
 
 
         //Debug.Log("(" + currentSlotManager.Row + ", " + currentSlotManager.Col + ")");
@@ -239,6 +249,8 @@ public class BoardManager : MonoBehaviour
 
         lastSlotManager.BridgeLeave();
         m_BridgesInside.Remove(i_Bridge.Id);
+        m_SideAObserver.BridgeLeave(leftSlot.Row - 1, rightSlot.Row - 1, leftSlot.Col - 1, rightSlot.Col - 1, i_Bridge.Height - 1);
+        m_SideBObserver.BridgeLeave(leftSlot.Row - 1, rightSlot.Row - 1, leftSlot.Col - 1, rightSlot.Col - 1, i_Bridge.Height - 1);
         //i_Bridge.LeftSlot.TurnOn();
         //i_Bridge.RightSlot.TurnOn();
     }
