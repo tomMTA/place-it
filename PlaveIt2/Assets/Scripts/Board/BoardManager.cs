@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour
 {
+    [SerializeField] public int m_Level;
     private readonly SlotManager[,] m_SlotManagers = new SlotManager[9, 9];
     private readonly Dictionary<int, Bridge> m_BridgesInside = new Dictionary<int, Bridge>();
     private const string m_ExceptionMessage = "You can't place it here!";
@@ -20,8 +21,8 @@ public class BoardManager : MonoBehaviour
     {
         m_IsRotated = false;
         m_IsRotating = false;
-        m_SideAObserver = new SideObserver("12", eSide.A);
-        m_SideBObserver = new SideObserver("12", eSide.B);
+        m_SideAObserver = new SideObserver(m_Level.ToString(), eSide.A);
+        m_SideBObserver = new SideObserver(m_Level.ToString(), eSide.B);
         AlertPivot alertPivot = GetComponent<AlertPivot>();
         alertPivot.RotationStarted += OnRotationStart;
         alertPivot.RotationStopped += OnRotationStop;

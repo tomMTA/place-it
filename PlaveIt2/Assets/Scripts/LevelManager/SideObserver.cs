@@ -11,6 +11,7 @@ public class SideObserver: MonoBehaviour
 
     public SideObserver(string i_Level, eSide i_Side)
     {
+        Debug.Log("Level" + i_Level + "Side" + i_Side);
         m_Solution = GameObject.Find("Level" + i_Level + "Side" + i_Side).GetComponent<SideMatrix>();
         m_Side = i_Side;
         m_Differences = 0;
@@ -64,7 +65,8 @@ public class SideObserver: MonoBehaviour
                 break;
         }
 
-        Debug.Log("Side " + m_Side + " differences: " + m_Differences);
+        printAllDifferences();
+        //Debug.Log("Side " + m_Side + " differences: " + m_Differences);
         //printSideView();
     }
 
@@ -89,6 +91,21 @@ public class SideObserver: MonoBehaviour
             updateColorAndDifferences(xIterator, i_Y, i_Depth, i_BridgeColor);
         }
         updateForOnlyHeight(i_EndX, i_Y, i_Depth, i_BridgeColor);
+    }
+
+    private void printAllDifferences()
+    {
+        Debug.Log("----------------Side" + m_Side + "Differences---------------");
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                if (!m_ObservedColors.GetColor(i, j).IsEqual(m_Solution.At(i, j)))
+                {
+                    Debug.Log("(" + i + ", " + j + ") " + m_ObservedColors.GetColor(i, j) + ", " + m_Solution.At(i, j));
+                }
+            }
+        }
     }
 
     private void updateForOnlyHeight(int i_X, int i_Y, int i_Depth, eColor i_BridgeColor)
