@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour
 {
+    [SerializeField] public int m_Level;
     private readonly SlotManager[,] m_SlotManagers = new SlotManager[9, 9];
     private readonly Dictionary<int, Bridge> m_BridgesInside = new Dictionary<int, Bridge>();
     private const string m_ExceptionMessage = "You can't place it here!";
@@ -19,8 +21,8 @@ public class BoardManager : MonoBehaviour
     {
         m_IsRotated = false;
         m_IsRotating = false;
-        m_SideAObserver = new SideObserver("12", eSide.A);
-        m_SideBObserver = new SideObserver("12", eSide.B);
+        m_SideAObserver = new SideObserver(m_Level.ToString(), eSide.A);
+        m_SideBObserver = new SideObserver(m_Level.ToString(), eSide.B);
         AlertPivot alertPivot = GetComponent<AlertPivot>();
         alertPivot.RotationStarted += OnRotationStart;
         alertPivot.RotationStopped += OnRotationStop;
@@ -123,12 +125,19 @@ public class BoardManager : MonoBehaviour
             rightSlot.TurnOff();
             leftSlot.BridgeEnter(i_Bridge);
             rightSlot.BridgeEnter(i_Bridge);
+            m_SideAObserver.BridgeEnter(leftSlot.Row - 1, rightSlot.Row - 1, leftSlot.Col - 1, rightSlot.Col - 1, i_Bridge.Height - 1, i_Bridge.Color);
+            m_SideBObserver.BridgeEnter(leftSlot.Row - 1, rightSlot.Row - 1, leftSlot.Col - 1, rightSlot.Col - 1, i_Bridge.Height - 1, i_Bridge.Color);
             m_BridgesInside.Add(i_Bridge.Id, i_Bridge);
             while (currentSlot != null)
             {
                 currentSlot.HeightsAbove.Add(i_Bridge.Height);
                 currentSlot = getNextSlot(currentSlot, rightSlot);
             }
+        }
+
+        if (m_SideAObserver.Differences == 0 && m_SideBObserver.Differences == 0)
+        {
+            GameObject.Find("Congratulations").GetComponent<Image>().enabled = true;
         }
     }
 
@@ -223,8 +232,10 @@ public class BoardManager : MonoBehaviour
 
     public void PullOutBridge(Bridge i_Bridge)
     {
-        SlotManager currentSlotManager = i_Bridge.LeftSlot;
-        SlotManager lastSlotManager = i_Bridge.RightSlot;
+        SlotManager leftSlot = i_Bridge.LeftSlot;
+        SlotManager rightSlot = i_Bridge.RightSlot;
+        SlotManager currentSlotManager = leftSlot;
+        SlotManager lastSlotManager = rightSlot;
 
 
         //Debug.Log("(" + currentSlotManager.Row + ", " + currentSlotManager.Col + ")");
@@ -239,6 +250,8 @@ public class BoardManager : MonoBehaviour
 
         lastSlotManager.BridgeLeave();
         m_BridgesInside.Remove(i_Bridge.Id);
+        m_SideAObserver.BridgeLeave(leftSlot.Row - 1, rightSlot.Row - 1, leftSlot.Col - 1, rightSlot.Col - 1, i_Bridge.Height - 1);
+        m_SideBObserver.BridgeLeave(leftSlot.Row - 1, rightSlot.Row - 1, leftSlot.Col - 1, rightSlot.Col - 1, i_Bridge.Height - 1);
         //i_Bridge.LeftSlot.TurnOn();
         //i_Bridge.RightSlot.TurnOn();
     }
