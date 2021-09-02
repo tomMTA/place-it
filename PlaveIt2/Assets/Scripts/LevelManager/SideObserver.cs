@@ -11,7 +11,7 @@ public class SideObserver: MonoBehaviour
 
     public SideObserver(string i_Level, eSide i_Side)
     {
-        Debug.Log("Level" + i_Level + "Side" + i_Side);
+        //Debug.Log("Level" + i_Level + "Side" + i_Side);
         m_Solution = GameObject.Find("Level" + i_Level + "Side" + i_Side).GetComponent<SideMatrix>();
         m_Side = i_Side;
         m_Differences = 0;
@@ -54,7 +54,7 @@ public class SideObserver: MonoBehaviour
                 if (i_StartCol == i_EndCol)
                 {
                     updateForFullBridge(8 - i_EndRow, 8 - i_StartRow, i_BridgeHeight, 8 - i_StartCol, i_BridgeColor);
-                    Debug.Log("Side " + m_Side + ", startRow: " + i_StartRow + ", endRow: " + i_EndRow);
+                    //Debug.Log("Side " + m_Side + ", startRow: " + i_StartRow + ", endRow: " + i_EndRow);
                     //Debug.Log("Side " + m_Side + " Depth: " + (8 - i_StartCol));
                 }
                 else
@@ -65,24 +65,24 @@ public class SideObserver: MonoBehaviour
                 break;
         }
 
-        printAllDifferences();
+        //printAllDifferences();
         //Debug.Log("Side " + m_Side + " differences: " + m_Differences);
         //printSideView();
     }
 
     private void updateForFullBridge(int i_StartX, int i_EndX, int i_Y, int i_Depth, eColor i_BridgeColor)
     {
-        Debug.Log("Side " + m_Side + "Full Bridge");
+        //Debug.Log("Side " + m_Side + "Full Bridge");
         if (m_Side == eSide.B)
         {
-            Debug.Log(" updating from " + i_StartX + " to " + i_EndX + " at height " + i_Y);
+            //Debug.Log(" updating from " + i_StartX + " to " + i_EndX + " at height " + i_Y);
             if (i_StartX > i_EndX)
             {
                 int temp = i_StartX;
                 i_StartX = i_EndX;
                 i_EndX = temp;
             }
-            Debug.Log(" updating from " + i_StartX + " to " + i_EndX + " at height " + i_Y);
+            //Debug.Log(" updating from " + i_StartX + " to " + i_EndX + " at height " + i_Y);
         }
         //makeRightBigger(ref i_StartX, ref i_EndX);
        updateForOnlyHeight(i_StartX, i_Y, i_Depth, i_BridgeColor);
@@ -95,14 +95,14 @@ public class SideObserver: MonoBehaviour
 
     private void printAllDifferences()
     {
-        Debug.Log("----------------Side" + m_Side + "Differences---------------");
+        //Debug.Log("----------------Side" + m_Side + "Differences---------------");
         for (int i = 0; i < 9; i++)
         {
             for (int j = 0; j < 8; j++)
             {
                 if (!m_ObservedColors.GetColor(i, j).IsEqual(m_Solution.At(i, j)))
                 {
-                    Debug.Log("(" + i + ", " + j + ") " + m_ObservedColors.GetColor(i, j) + ", " + m_Solution.At(i, j));
+                    //Debug.Log("(" + i + ", " + j + ") " + m_ObservedColors.GetColor(i, j) + ", " + m_Solution.At(i, j));
                 }
             }
         }
@@ -142,7 +142,7 @@ public class SideObserver: MonoBehaviour
                 break;
         }
 
-        Debug.Log("Side " + m_Side + " differences: " + m_Differences);
+        //Debug.Log("Side " + m_Side + " differences: " + m_Differences);
         //printSideView();
     }
 
