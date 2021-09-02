@@ -27,7 +27,7 @@ public class SlotsHighlighter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_BoardManager = GameObject.Find("GameBoard").GetComponent<BoardManager>();
+        m_BoardManager = GameObject.FindGameObjectWithTag("GameBoard").GetComponent<BoardManager>();
         m_IsTilted = false;
         ray = new Ray(transform.position, Vector3.down);
     }
