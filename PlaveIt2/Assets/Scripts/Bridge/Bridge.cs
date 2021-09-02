@@ -31,7 +31,7 @@ public class Bridge : MonoBehaviour
     {
         //initBridge();
         m_IsTilted = false;
-        m_Board = GameObject.Find("GameBoard").GetComponent<BoardManager>();
+        m_Board = GameObject.FindGameObjectWithTag("GameBoard").GetComponent<BoardManager>();
         m_SlotsHighlighter = transform.GetChild(0).GetComponent<SlotsHighlighter>();
         m_SlotsHighlighter.HoveredAboveSlot += HighlightSlots;
         m_SlotsHighlighter.LeftAboveSlot += UnHighlightSlots;

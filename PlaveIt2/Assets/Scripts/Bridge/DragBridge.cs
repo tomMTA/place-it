@@ -28,7 +28,7 @@ public class DragBridge : MonoBehaviour
     {
 		slotsHighlighter = transform.GetChild(0).GetComponent<SlotsHighlighter>();
 		m_IsTilted = false;
-		gameBoard = GameObject.Find("GameBoard");
+		gameBoard = GameObject.FindGameObjectWithTag("GameBoard");
 		MeshRenderer boardRenderer = gameBoard.GetComponentsInChildren<MeshRenderer>()[0]; //PLASTER - if we add more renderers we need to modify this
 		boardPosition = boardRenderer.bounds.center;
 		xBounadries[0] = boardPosition.x - rangeFromBoard;
