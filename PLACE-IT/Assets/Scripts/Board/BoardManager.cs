@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour
 {
     [SerializeField] public int m_Level;
+    [SerializeField] public int[] m_Moves_Bars = new int[2];
+    [SerializeField] public int[] m_Time_Bars = new int[2];
+    private int m_Stars;
     private readonly SlotManager[,] m_SlotManagers = new SlotManager[9, 9];
     private readonly Dictionary<int, Bridge> m_BridgesInside = new Dictionary<int, Bridge>();
     private const string m_ExceptionMessage = "You can't place it here!";
@@ -13,6 +17,7 @@ public class BoardManager : MonoBehaviour
     private bool m_IsRotating;
     private SideObserver m_SideAObserver;
     private SideObserver m_SideBObserver;
+    private int m_Moves;
     public delegate void TiltedHandler();
     public TiltedHandler Tilted;
 
@@ -23,6 +28,7 @@ public class BoardManager : MonoBehaviour
         m_IsRotating = false;
         m_SideAObserver = new SideObserver(m_Level.ToString(), eSide.A);
         m_SideBObserver = new SideObserver(m_Level.ToString(), eSide.B);
+        m_Moves = 0;
         AlertPivot alertPivot = GetComponent<AlertPivot>();
         alertPivot.RotationStarted += OnRotationStart;
         alertPivot.RotationStopped += OnRotationStop;
@@ -136,6 +142,7 @@ public class BoardManager : MonoBehaviour
             m_SideAObserver.BridgeEnter(leftSlot.Row - 1, rightSlot.Row - 1, leftSlot.Col - 1, rightSlot.Col - 1, i_Bridge.Height - 1, i_Bridge.Color);
             m_SideBObserver.BridgeEnter(leftSlot.Row - 1, rightSlot.Row - 1, leftSlot.Col - 1, rightSlot.Col - 1, i_Bridge.Height - 1, i_Bridge.Color);
             m_BridgesInside.Add(i_Bridge.Id, i_Bridge);
+            m_Moves++;
             while (currentSlot != null)
             {
                 currentSlot.HeightsAbove.Add(i_Bridge.Height);
@@ -145,9 +152,12 @@ public class BoardManager : MonoBehaviour
 
         if (m_SideAObserver.Differences == 0 && m_SideBObserver.Differences == 0)
         {
-            GameObject.Find("Congratulations").GetComponent<Image>().enabled = true;
-            GameObject.FindWithTag("Timer").GetComponent<Timer>().enabled = false;
             i_Bridge.EnteredSlot += disableBridges;
+            GameObject.Find("Congratulations").GetComponent<Image>().enabled = true;
+            Timer timer = GameObject.FindWithTag("Timer").GetComponent<Timer>();
+            setStars(timer.Seconds);
+            timer.enabled = false;
+            Debug.Log("Stars: " + m_Stars);
         }
     }
 
@@ -215,6 +225,34 @@ public class BoardManager : MonoBehaviour
 
         return rightSlot;
     }*/
+
+    private int getStarsAccordingToBars(int[] i_Bars, int i_Value)
+    {
+        int stars;
+
+        if (i_Value <= i_Bars[0])
+        {
+            stars = 3;
+        }
+        else if (i_Value <= i_Bars[1])
+        {
+            stars = 2;
+        }
+        else
+        {
+            stars = 1;
+        }
+
+        return stars;
+    }
+
+    private void setStars(int i_Seconds)
+    {
+        int timeStars = getStarsAccordingToBars(m_Time_Bars, i_Seconds);
+        int movesStars = getStarsAccordingToBars(m_Moves_Bars, m_Moves);
+        float avgStars = ((float)timeStars + (float)movesStars) / 2;
+        m_Stars = (int)avgStars;
+    }
 
     private SlotManager getNextSlot(SlotManager i_Current, SlotManager i_Last)
     {
