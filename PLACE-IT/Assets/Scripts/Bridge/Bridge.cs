@@ -234,7 +234,7 @@ public class Bridge : MonoBehaviour
         }
 
         transform.parent = m_OriginalParent;
-        //transform.position = m_OriginalPosition;
+        transform.position = m_OriginalPosition;
         transform.GetComponent<DragBridge>().enabled = true;
         m_SlotsHighlighter.enabled = true;
         m_Board.PullOutBridge(this);

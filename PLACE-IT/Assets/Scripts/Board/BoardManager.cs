@@ -10,12 +10,18 @@ public class BoardManager : MonoBehaviour
     [SerializeField] public int[] m_Moves_Bars = new int[2];
     [SerializeField] public int[] m_Time_Bars = new int[2];
     [SerializeField] public GameObject m_StarsCanvas;
+    [SerializeField] private SoundPlayer m_SoundPlayer;
+
+    private AudioSource m_BridgePlacementSound;
+    private AudioSource m_BridgePullOutSound;
+    private AudioSource m_WinSound;
     private int m_Stars;
     private readonly SlotManager[,] m_SlotManagers = new SlotManager[9, 9];
     private readonly Dictionary<int, Bridge> m_BridgesInside = new Dictionary<int, Bridge>();
     private const string m_ExceptionMessage = "You can't place it here!";
     private bool m_IsRotated;
     private bool m_IsRotating;
+    private bool m_IsWin;
     private SideObserver m_SideAObserver;
     private SideObserver m_SideBObserver;
     private int m_Moves;
@@ -25,8 +31,10 @@ public class BoardManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_BridgePullOutSound = m_BridgePlacementSound = GetComponent<AudioSource>();
         m_IsRotated = false;
         m_IsRotating = false;
+        m_IsWin = false;
         m_SideAObserver = new SideObserver(m_Level.ToString(), eSide.A);
         m_SideBObserver = new SideObserver(m_Level.ToString(), eSide.B);
         m_Moves = 0;
@@ -120,11 +128,22 @@ public class BoardManager : MonoBehaviour
         return rightSlot;
     }*/
 
-    private void disableBridges()
+    public void OnBridgeEnter()
     {
-        foreach (Bridge bridge in m_BridgesInside.Values)
+        m_SoundPlayer.PlayClickSound();
+        Debug.Log("playing");
+        if (m_IsWin)
         {
-            bridge.Enabled = false;
+            Timer timer = GameObject.FindWithTag("Timer").GetComponent<Timer>();
+            setStars(timer.Seconds);
+            timer.enabled = false;
+            m_StarsCanvas.SetActive(true);
+            Debug.Log("Stars: " + m_Stars);
+            m_SoundPlayer.PlayWinSound();
+            foreach (Bridge bridge in m_BridgesInside.Values)
+            {
+                bridge.Enabled = false;
+            }
         }
     }
 
@@ -136,6 +155,7 @@ public class BoardManager : MonoBehaviour
 
         if (leftSlot && rightSlot)
         {
+            i_Bridge.EnteredSlot += OnBridgeEnter;
             leftSlot.TurnOff();
             rightSlot.TurnOff();
             leftSlot.BridgeEnter(i_Bridge);
@@ -153,13 +173,10 @@ public class BoardManager : MonoBehaviour
 
         if (m_SideAObserver.Differences == 0 && m_SideBObserver.Differences == 0)
         {
-            i_Bridge.EnteredSlot += disableBridges;
+            //i_Bridge.EnteredSlot += disableBridges;
             //GameObject.Find("Congratulations").GetComponent<Image>().enabled = true;
-            Timer timer = GameObject.FindWithTag("Timer").GetComponent<Timer>();
-            setStars(timer.Seconds);
-            timer.enabled = false;
-            m_StarsCanvas.SetActive(true);
-            Debug.Log("Stars: " + m_Stars);
+            Debug.Log("WIN");
+            m_IsWin = true;
         }
     }
 
@@ -297,7 +314,7 @@ public class BoardManager : MonoBehaviour
         SlotManager currentSlotManager = leftSlot;
         SlotManager lastSlotManager = rightSlot;
 
-
+        m_SoundPlayer.PlayClickSound();
         //Debug.Log("(" + currentSlotManager.Row + ", " + currentSlotManager.Col + ")");
 
         currentSlotManager.BridgeLeave();

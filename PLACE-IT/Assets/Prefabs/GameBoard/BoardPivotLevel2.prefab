@@ -189,7 +189,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameBoardLevel2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5473887317510883178, guid: b1e969f90f41ea449a5158c00e0b852d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b1e969f90f41ea449a5158c00e0b852d, type: 3}
 --- !u!4 &7005416636382204914 stripped
 Transform:
