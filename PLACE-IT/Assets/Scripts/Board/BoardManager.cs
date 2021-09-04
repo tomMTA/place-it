@@ -11,7 +11,6 @@ public class BoardManager : MonoBehaviour
     private const string m_ExceptionMessage = "You can't place it here!";
     private bool m_IsRotated;
     private bool m_IsRotating;
-    private bool m_IsWin;
     private SideObserver m_SideAObserver;
     private SideObserver m_SideBObserver;
     public delegate void TiltedHandler();
@@ -22,7 +21,6 @@ public class BoardManager : MonoBehaviour
     {
         m_IsRotated = false;
         m_IsRotating = false;
-        m_IsWin = false;
         m_SideAObserver = new SideObserver(m_Level.ToString(), eSide.A);
         m_SideBObserver = new SideObserver(m_Level.ToString(), eSide.B);
         AlertPivot alertPivot = GetComponent<AlertPivot>();
@@ -148,8 +146,8 @@ public class BoardManager : MonoBehaviour
         if (m_SideAObserver.Differences == 0 && m_SideBObserver.Differences == 0)
         {
             GameObject.Find("Congratulations").GetComponent<Image>().enabled = true;
+            GameObject.FindWithTag("Timer").GetComponent<Timer>().enabled = false;
             i_Bridge.EnteredSlot += disableBridges;
-            //m_IsWin = true;
         }
     }
 

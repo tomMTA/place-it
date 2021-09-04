@@ -14,6 +14,7 @@ TagManager:
   - Orange
   - Purple
   - Canvas
+  - Timer
   layers:
   - Default
   - TransparentFX
