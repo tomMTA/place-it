@@ -69,16 +69,19 @@ public class Bridge : MonoBehaviour
         //}
     }
 
-    public void HighlightSlots(SlotManager i_LeftSlow)
+    public void HighlightSlots(SlotManager i_LeftSlot)
     {
-        m_RightSlot = m_Board.TurnOnSlots(i_LeftSlow, this);
-        m_LeftSlot = i_LeftSlow;
+        m_RightSlot = m_Board.TurnOnSlots(i_LeftSlot, this);
+        m_LeftSlot = i_LeftSlot;
     }
 
-    public void UnHighlightSlots(SlotManager i_LeftSlow)
+    public void UnHighlightSlots(SlotManager i_LeftSlot)
     {
-        m_Board.TurnOffSlots(i_LeftSlow, this);
-        m_LeftSlot = null;
+        if (i_LeftSlot)
+        {
+            m_Board.TurnOffSlots(i_LeftSlot, this);
+            m_LeftSlot = null;
+        }
     }
 
     public int Height
