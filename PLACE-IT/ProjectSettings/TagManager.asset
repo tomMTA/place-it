@@ -15,6 +15,7 @@ TagManager:
   - Purple
   - Canvas
   - Timer
+  - Stars
   layers:
   - Default
   - TransparentFX

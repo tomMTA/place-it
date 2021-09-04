@@ -9,6 +9,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField] public int m_Level;
     [SerializeField] public int[] m_Moves_Bars = new int[2];
     [SerializeField] public int[] m_Time_Bars = new int[2];
+    [SerializeField] public GameObject m_StarsCanvas;
     private int m_Stars;
     private readonly SlotManager[,] m_SlotManagers = new SlotManager[9, 9];
     private readonly Dictionary<int, Bridge> m_BridgesInside = new Dictionary<int, Bridge>();
@@ -153,10 +154,11 @@ public class BoardManager : MonoBehaviour
         if (m_SideAObserver.Differences == 0 && m_SideBObserver.Differences == 0)
         {
             i_Bridge.EnteredSlot += disableBridges;
-            GameObject.Find("Congratulations").GetComponent<Image>().enabled = true;
+            //GameObject.Find("Congratulations").GetComponent<Image>().enabled = true;
             Timer timer = GameObject.FindWithTag("Timer").GetComponent<Timer>();
             setStars(timer.Seconds);
             timer.enabled = false;
+            m_StarsCanvas.SetActive(true);
             Debug.Log("Stars: " + m_Stars);
         }
     }
@@ -251,7 +253,17 @@ public class BoardManager : MonoBehaviour
         int timeStars = getStarsAccordingToBars(m_Time_Bars, i_Seconds);
         int movesStars = getStarsAccordingToBars(m_Moves_Bars, m_Moves);
         float avgStars = ((float)timeStars + (float)movesStars) / 2;
+
         m_Stars = (int)avgStars;
+        if (m_Stars >= 2)
+        {
+            m_StarsCanvas.transform.Find("FilledStar2").gameObject.SetActive(true);
+        }
+
+        if (m_Stars >= 3)
+        {
+            m_StarsCanvas.transform.Find("FilledStar3").gameObject.SetActive(true);
+        }
     }
 
     private SlotManager getNextSlot(SlotManager i_Current, SlotManager i_Last)
