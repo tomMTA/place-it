@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6020931680466562969}
   - component: {fileID: 6327115864856547871}
   - component: {fileID: 7998651650786895634}
+  - component: {fileID: 7362479839207914266}
   m_Layer: 5
   m_Name: BridgeInventory
   m_TagString: Untagged
@@ -34,10 +35,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -91}
-  m_SizeDelta: {x: 1920, y: 180}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -43.71}
+  m_SizeDelta: {x: 0, y: 85.42346}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6020931680466562969
 CanvasRenderer:
@@ -101,6 +102,20 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &7362479839207914266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807969773665695894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820bfb14d55b50040a5b2559d7080f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeBridge: {fileID: 0}
+  bridgeButtons: []
 --- !u!1001 &8598097549878266007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,12 +161,12 @@ PrefabInstance:
     - target: {fileID: 6847262713437382074, guid: b0ecc35da3c8a914ba5fbfb451bb6e4a,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 145
+      value: 54.49243
       objectReference: {fileID: 0}
     - target: {fileID: 6847262713437382074, guid: b0ecc35da3c8a914ba5fbfb451bb6e4a,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 145
+      value: 51.164307
       objectReference: {fileID: 0}
     - target: {fileID: 6847262713437382074, guid: b0ecc35da3c8a914ba5fbfb451bb6e4a,
         type: 3}
