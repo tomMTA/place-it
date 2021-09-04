@@ -7,9 +7,14 @@ public class ClickOnBridge : MonoBehaviour
 {
 	[SerializeField] public GameObject bridgeRef;
 
-    public void BridgeButtonClicked()
+	public delegate void BridgeButtonClickedHandler(GameObject bridge);
+	public event BridgeButtonClickedHandler bridgeButtonClicked;
+
+	public void BridgeButtonClicked()
 	{
-		bridgeRef.SetActive(!bridgeRef.activeInHierarchy);
+		Debug.Log("Click on bvridge");
+		bridgeButtonClicked?.Invoke(bridgeRef);
+		//bridgeRef.SetActive(!bridgeRef.activeInHierarchy);
 	}
 
     // Start is called before the first frame update
