@@ -18,6 +18,8 @@ public class Bridge : MonoBehaviour
     public float bridgeRotationSpeed = 10f;
     public delegate void EnteredSlotHandler();
     public event EnteredSlotHandler EnteredSlot;
+    public delegate void ExitedSlotHandler(GameObject bridge);
+    public event ExitedSlotHandler ExitedSlot;
 
     Vector3 m_SlotsTarget;
     Vector3 m_OriginalPosition;
@@ -67,13 +69,13 @@ public class Bridge : MonoBehaviour
         //}
     }
 
-    protected void HighlightSlots(SlotManager i_LeftSlow)
+    public void HighlightSlots(SlotManager i_LeftSlow)
     {
         m_RightSlot = m_Board.TurnOnSlots(i_LeftSlow, this);
         m_LeftSlot = i_LeftSlow;
     }
 
-    protected void UnHighlightSlots(SlotManager i_LeftSlow)
+    public void UnHighlightSlots(SlotManager i_LeftSlow)
     {
         m_Board.TurnOffSlots(i_LeftSlow, this);
         m_LeftSlot = null;
@@ -229,11 +231,12 @@ public class Bridge : MonoBehaviour
         }
 
         transform.parent = m_OriginalParent;
-        transform.position = m_OriginalPosition;
+        //transform.position = m_OriginalPosition;
         transform.GetComponent<DragBridge>().enabled = true;
         m_SlotsHighlighter.enabled = true;
         m_Board.PullOutBridge(this);
         //Debug.Log("Curr IsRotated = " + m_Board.IsRotated + " prev IsRotated = " + m_IsBoardRotated);
         m_IsInSlot = false;
+        ExitedSlot?.Invoke(gameObject);
     }
 }

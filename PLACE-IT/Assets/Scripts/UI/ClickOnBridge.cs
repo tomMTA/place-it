@@ -16,14 +16,8 @@ public class ClickOnBridge : MonoBehaviour
 		//bridgeRef.SetActive(!bridgeRef.activeInHierarchy);
 	}
 
-    // Start is called before the first frame update
-    void Start()
+	public Bridge BridgeScript
     {
-	}
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+		get { return bridgeRef.GetComponent<Bridge>(); }
     }
 }
