@@ -12,7 +12,6 @@ public class ClickOnBridge : MonoBehaviour
 
 	public void BridgeButtonClicked()
 	{
-		Debug.Log("Click on bvridge");
 		bridgeButtonClicked?.Invoke(bridgeRef);
 		//bridgeRef.SetActive(!bridgeRef.activeInHierarchy);
 	}
