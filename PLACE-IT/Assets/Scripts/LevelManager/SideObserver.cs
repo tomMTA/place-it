@@ -36,6 +36,8 @@ public class SideObserver: MonoBehaviour
 
     public void BridgeEnter(int i_StartRow, int i_EndRow, int i_StartCol, int i_EndCol, int i_BridgeHeight, eColor i_BridgeColor)
     {
+        makeRightBigger(ref i_StartRow, ref i_EndRow);
+        makeRightBigger(ref i_StartCol, ref i_EndCol);
         switch (m_Side)
         {
             case eSide.A:
@@ -72,19 +74,13 @@ public class SideObserver: MonoBehaviour
 
     private void updateForFullBridge(int i_StartX, int i_EndX, int i_Y, int i_Depth, eColor i_BridgeColor)
     {
-        //Debug.Log("Side " + m_Side + "Full Bridge");
-        if (m_Side == eSide.B)
+        /*if (i_StartX > i_EndX)
         {
-            //Debug.Log(" updating from " + i_StartX + " to " + i_EndX + " at height " + i_Y);
-            if (i_StartX > i_EndX)
-            {
-                int temp = i_StartX;
-                i_StartX = i_EndX;
-                i_EndX = temp;
-            }
-            //Debug.Log(" updating from " + i_StartX + " to " + i_EndX + " at height " + i_Y);
+            int temp = i_StartX;
+            i_StartX = i_EndX;
+            i_EndX = temp;
         }
-        //makeRightBigger(ref i_StartX, ref i_EndX);
+*/
        updateForOnlyHeight(i_StartX, i_Y, i_Depth, i_BridgeColor);
         for (int xIterator = i_StartX + 1; xIterator < i_EndX; xIterator++)
         {
@@ -95,14 +91,14 @@ public class SideObserver: MonoBehaviour
 
     private void printAllDifferences()
     {
-        //Debug.Log("----------------Side" + m_Side + "Differences---------------");
+        Debug.Log("----------------Side" + m_Side + "Differences---------------");
         for (int i = 0; i < 9; i++)
         {
             for (int j = 0; j < 8; j++)
             {
                 if (!m_ObservedColors.GetColor(i, j).IsEqual(m_Solution.At(i, j)))
                 {
-                    //Debug.Log("(" + i + ", " + j + ") " + m_ObservedColors.GetColor(i, j) + ", " + m_Solution.At(i, j));
+                    Debug.Log("(" + i + ", " + j + ") " + m_ObservedColors.GetColor(i, j) + ", " + m_Solution.At(i, j));
                 }
             }
         }

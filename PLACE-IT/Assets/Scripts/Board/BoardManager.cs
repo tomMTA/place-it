@@ -131,14 +131,13 @@ public class BoardManager : MonoBehaviour
     public void OnBridgeEnter()
     {
         m_SoundPlayer.PlayClickSound();
-        Debug.Log("playing");
         if (m_IsWin)
         {
             Timer timer = GameObject.FindWithTag("Timer").GetComponent<Timer>();
             setStars(timer.Seconds);
             timer.enabled = false;
             m_StarsCanvas.SetActive(true);
-            Debug.Log("Stars: " + m_Stars);
+            //Debug.Log("Stars: " + m_Stars);
             m_SoundPlayer.PlayWinSound();
             foreach (Bridge bridge in m_BridgesInside.Values)
             {
@@ -160,6 +159,7 @@ public class BoardManager : MonoBehaviour
             rightSlot.TurnOff();
             leftSlot.BridgeEnter(i_Bridge);
             rightSlot.BridgeEnter(i_Bridge);
+            //Debug.Log("LeftSlot: (" + leftSlot.Row + ", " + leftSlot.Col + "), RightSlot: (" + rightSlot.Row + ", " + rightSlot.Col + ")");
             m_SideAObserver.BridgeEnter(leftSlot.Row - 1, rightSlot.Row - 1, leftSlot.Col - 1, rightSlot.Col - 1, i_Bridge.Height - 1, i_Bridge.Color);
             m_SideBObserver.BridgeEnter(leftSlot.Row - 1, rightSlot.Row - 1, leftSlot.Col - 1, rightSlot.Col - 1, i_Bridge.Height - 1, i_Bridge.Color);
             m_BridgesInside.Add(i_Bridge.Id, i_Bridge);
@@ -175,7 +175,7 @@ public class BoardManager : MonoBehaviour
         {
             //i_Bridge.EnteredSlot += disableBridges;
             //GameObject.Find("Congratulations").GetComponent<Image>().enabled = true;
-            Debug.Log("WIN");
+            //Debug.Log("WIN");
             m_IsWin = true;
         }
     }

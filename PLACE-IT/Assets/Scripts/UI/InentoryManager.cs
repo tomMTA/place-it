@@ -43,7 +43,7 @@ public class InentoryManager : MonoBehaviour
 
 	public void ActiveBridgeEnteredBoard()
     {
-		Debug.Log("Active bridge is being nulled");
+		//Debug.Log("Active bridge is being nulled");
 		activeBridge = null;
     }
 
@@ -51,12 +51,12 @@ public class InentoryManager : MonoBehaviour
     {
 		if (activeBridge)
 		{
-			Debug.Log("Active bridge is not null");
+			//Debug.Log("Active bridge is not null");
 			i_Bridge.SetActive(false);
         }
         else
         {
-			Debug.Log("Active bridge is null");
+			//Debug.Log("Active bridge is null");
 			activeBridge = i_Bridge;
 			setPositionOnActivated(activeBridge);
         }
@@ -69,7 +69,7 @@ public class InentoryManager : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		Debug.Log("OnDestroy for InventoryManager was invoked");
+		//Debug.Log("OnDestroy for InventoryManager was invoked");
 		foreach (GameObject border in bridgeButtons)
 		{
 			border.GetComponent<ClickOnBridge>().bridgeButtonClicked -= BridgeButtonClicked;

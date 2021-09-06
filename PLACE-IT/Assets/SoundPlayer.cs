@@ -8,12 +8,10 @@ public class SoundPlayer : MonoBehaviour
     public void PlayClickSound()
     {
         m_AudioSource[0].Play();
-        Debug.Log("Play click");
     }
 
     public void PlayWinSound()
     {
         m_AudioSource[1].Play();
-        Debug.Log("Play win");
     }
 }
