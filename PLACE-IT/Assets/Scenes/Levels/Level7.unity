@@ -766,6 +766,16 @@ PrefabInstance:
       propertyPath: bridgeRef
       value: 
       objectReference: {fileID: 1596941718}
+    - target: {fileID: 2479234753010532847, guid: c6b074db43048e7488ffcec98f9c2d29,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 31.986355
+      objectReference: {fileID: 0}
+    - target: {fileID: 2479234753010532847, guid: c6b074db43048e7488ffcec98f9c2d29,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 49.052994
+      objectReference: {fileID: 0}
     - target: {fileID: 4084122289873847506, guid: c6b074db43048e7488ffcec98f9c2d29,
         type: 3}
       propertyPath: m_Name
@@ -885,6 +895,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -360.321
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141387024195206133, guid: c6b074db43048e7488ffcec98f9c2d29,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 47.62213
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141387024195206133, guid: c6b074db43048e7488ffcec98f9c2d29,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 30.777489
       objectReference: {fileID: 0}
     - target: {fileID: 7434586580136469508, guid: c6b074db43048e7488ffcec98f9c2d29,
         type: 3}
