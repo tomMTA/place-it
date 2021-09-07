@@ -61,11 +61,8 @@ public class Bridge : MonoBehaviour
 
     private void RotateOnClickAndDrag()
     {
-		if(enabled)
-		{
-			bridgeAngle += Input.GetAxis("Mouse X") * bridgeRotationSpeed * -Time.deltaTime;
-			bridgeAngle = Mathf.Clamp(bridgeAngle, 0, 180);
-		}
+		bridgeAngle += Input.GetAxis("Mouse X") * bridgeRotationSpeed * -Time.deltaTime;
+		bridgeAngle = Mathf.Clamp(bridgeAngle, 0, 180);
         //if (Input.GetMouseButtonDown(0));
         //{
         //    this.transform.Rotate(Time.deltaTime * 10);
@@ -144,7 +141,7 @@ public class Bridge : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (enabled && m_Enabled)
+        if (m_Enabled)
         {
             if (Input.GetMouseButtonDown(2))
             {
@@ -168,25 +165,19 @@ public class Bridge : MonoBehaviour
 
     public void Tilt()
     {
-		if(enabled)
+		if (m_LeftSlot)
 		{
-			if (m_LeftSlot)
-			{
-				UnHighlightSlots(m_LeftSlot);
-			}
-			rotate90Degrees();
+			UnHighlightSlots(m_LeftSlot);
 		}
+		rotate90Degrees();
     }
 
     protected void OnTilted()
     {
-		if(enabled)
+		if (m_LeftSlot)
 		{
-			if (m_LeftSlot)
-			{
-				UnHighlightSlots(m_LeftSlot);
-				rotate90Degrees();
-			}
+			UnHighlightSlots(m_LeftSlot);
+			rotate90Degrees();
 		}
     }
 

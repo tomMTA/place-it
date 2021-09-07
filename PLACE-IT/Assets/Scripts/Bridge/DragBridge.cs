@@ -44,48 +44,39 @@ public class DragBridge : MonoBehaviour
 
 	void OnMouseUp()
 	{
-		if(enabled)
-		{
-			Cursor.visible = true;
-			isClicked = false;
-			HoverHighlight HoverHighlightScriptReference = GetComponent<HoverHighlight>();
-			HoverHighlightScriptReference.ResetColor();
-		}
+		Cursor.visible = true;
+		isClicked = false;
+		HoverHighlight HoverHighlightScriptReference = GetComponent<HoverHighlight>();
+		HoverHighlightScriptReference.ResetColor();
 	}
 
 	void OnMouseDown()
 	{
-		if(enabled)
-		{
 			Cursor.visible = false;
 			isClicked = true;
-		}
 	}
 
 	void OnMouseDrag()
 	{
-		if (enabled)
+		mouseAxisX = Input.GetAxis("Mouse X");
+		mouseAxisY = Input.GetAxis("Mouse Y");
+		float newX = transform.position.x + mouseAxisX * xVelocity;
+		float newZ = transform.position.z + mouseAxisY * zVelocity;
+
+		if (!isInXRange(newX))
 		{
-			mouseAxisX = Input.GetAxis("Mouse X");
-			mouseAxisY = Input.GetAxis("Mouse Y");
-			float newX = transform.position.x + mouseAxisX * xVelocity;
-			float newZ = transform.position.z + mouseAxisY * zVelocity;
-
-			if (!isInXRange(newX))
-			{
-				newX = transform.position.x;
-			}
-			if (!isInZRange(newZ))
-			{
-				newZ = transform.position.z;
-			}
-			transform.position = new Vector3(newX, transform.position.y, newZ);
-
-			/*if (Input.GetMouseButtonDown(1))
-			{
-				Rotate90Degree();
-			}*/
+			newX = transform.position.x;
 		}
+		if (!isInZRange(newZ))
+		{
+			newZ = transform.position.z;
+		}
+		transform.position = new Vector3(newX, transform.position.y, newZ);
+
+		/*if (Input.GetMouseButtonDown(1))
+		{
+			Rotate90Degree();
+		}*/
 	}
 
 	/*void OnMouseOver()

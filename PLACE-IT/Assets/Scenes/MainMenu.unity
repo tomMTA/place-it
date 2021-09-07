@@ -260,6 +260,12 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.UI.Slider, UnityEngine.UI
       objectReference: {fileID: 0}
+    - target: {fileID: 3558438302291821174, guid: 494f5a766dbc7ac4a921677456a89850,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f8c06a6606ba4691a8da5d0abe8332e,
+        type: 3}
     - target: {fileID: 3558438302864802691, guid: 494f5a766dbc7ac4a921677456a89850,
         type: 3}
       propertyPath: m_Name
