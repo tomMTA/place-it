@@ -89,7 +89,7 @@ public class DragBridge : MonoBehaviour
 
 	private void Rotate90Degree()
 	{
-		int newYAngle = transform.eulerAngles.y == 180 ? 270 : 180;
+		int newYAngle = transform.eulerAngles.y == 180 ? 270 : 180;	
 		Tilted.Invoke();
 		m_IsTilted = !m_IsTilted;
 		transform.eulerAngles = new Vector3(transform.eulerAngles.x, newYAngle, transform.eulerAngles.z);
