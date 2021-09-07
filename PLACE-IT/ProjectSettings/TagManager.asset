@@ -16,6 +16,11 @@ TagManager:
   - Canvas
   - Timer
   - Stars
+  - SoundPlayer
+  - ClickSound
+  - ApplauseSound
+  - ThemeSound
+  - MusicSlider
   layers:
   - Default
   - TransparentFX
