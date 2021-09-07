@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class InentoryManager : MonoBehaviour
 {
 	// public GameObject activeBridge;
-	[HideInInspector] public GameObject activeBridge;
+	[HideInInspector] public static GameObject activeBridge;
 	[SerializeField] List<GameObject> bridgeButtons;
 
 	void Start()

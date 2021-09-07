@@ -16,10 +16,13 @@ public class HoverHighlight : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (!Input.GetMouseButton(0))
-        {
-            meshRenderer.material.color = originalColor + new Color(0.3f, 0.3f, 0.3f);
-        }
+		if(this.enabled)
+		{
+			if (!Input.GetMouseButton(0))
+			{
+				meshRenderer.material.color = originalColor + new Color(0.3f, 0.3f, 0.3f);
+			}
+		}
     }
     void OnMouseExit()
     {
