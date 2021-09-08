@@ -58,20 +58,23 @@ public class DragBridge : MonoBehaviour
 
 	void OnMouseDrag()
 	{
-		mouseAxisX = Input.GetAxis("Mouse X");
-		mouseAxisY = Input.GetAxis("Mouse Y");
-		float newX = transform.position.x + mouseAxisX * xVelocity;
-		float newZ = transform.position.z + mouseAxisY * zVelocity;
+		if (enabled)
+		{
+			mouseAxisX = Input.GetAxis("Mouse X");
+			mouseAxisY = Input.GetAxis("Mouse Y");
+			float newX = transform.position.x + mouseAxisX * xVelocity;
+			float newZ = transform.position.z + mouseAxisY * zVelocity;
 
-		if (!isInXRange(newX))
-		{
-			newX = transform.position.x;
+			if (!isInXRange(newX))
+			{
+				newX = transform.position.x;
+			}
+			if (!isInZRange(newZ))
+			{
+				newZ = transform.position.z;
+			}
+			transform.position = new Vector3(newX, transform.position.y, newZ);
 		}
-		if (!isInZRange(newZ))
-		{
-			newZ = transform.position.z;
-		}
-		transform.position = new Vector3(newX, transform.position.y, newZ);
 
 		/*if (Input.GetMouseButtonDown(1))
 		{

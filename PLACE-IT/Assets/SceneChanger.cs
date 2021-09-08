@@ -11,6 +11,16 @@ public class SceneChanger : MonoBehaviour
 		SceneManager.LoadScene(sceneName);
 	}
 
+	public void LoadNextLevel()
+    {
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+	}
+
+	public void ResetLevel()
+    {
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
+
 	// Start is called before the first frame update
 	public void Exit()
 	{
