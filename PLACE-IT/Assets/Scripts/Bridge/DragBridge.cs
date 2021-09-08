@@ -58,20 +58,23 @@ public class DragBridge : MonoBehaviour
 
 	void OnMouseDrag()
 	{
-		mouseAxisX = Input.GetAxis("Mouse X");
-		mouseAxisY = Input.GetAxis("Mouse Y");
-		float newX = transform.position.x + mouseAxisX * xVelocity;
-		float newZ = transform.position.z + mouseAxisY * zVelocity;
+		if (enabled)
+		{
+			mouseAxisX = Input.GetAxis("Mouse X");
+			mouseAxisY = Input.GetAxis("Mouse Y");
+			float newX = transform.position.x + mouseAxisX * xVelocity;
+			float newZ = transform.position.z + mouseAxisY * zVelocity;
 
-		if (!isInXRange(newX))
-		{
-			newX = transform.position.x;
+			if (!isInXRange(newX))
+			{
+				newX = transform.position.x;
+			}
+			if (!isInZRange(newZ))
+			{
+				newZ = transform.position.z;
+			}
+			transform.position = new Vector3(newX, transform.position.y, newZ);
 		}
-		if (!isInZRange(newZ))
-		{
-			newZ = transform.position.z;
-		}
-		transform.position = new Vector3(newX, transform.position.y, newZ);
 
 		/*if (Input.GetMouseButtonDown(1))
 		{
@@ -89,7 +92,7 @@ public class DragBridge : MonoBehaviour
 
 	private void Rotate90Degree()
 	{
-		int newYAngle = transform.eulerAngles.y == 180 ? 270 : 180;
+		int newYAngle = transform.eulerAngles.y == 180 ? 270 : 180;	
 		Tilted.Invoke();
 		m_IsTilted = !m_IsTilted;
 		transform.eulerAngles = new Vector3(transform.eulerAngles.x, newYAngle, transform.eulerAngles.z);

@@ -137,6 +137,7 @@ public class BoardManager : MonoBehaviour
             setStars(timer.Seconds);
             timer.enabled = false;
             m_StarsCanvas.SetActive(true);
+            GameObject.Find("StarsPanel").GetComponent<StarsFiller>().FillStars(m_Stars);
             //Debug.Log("Stars: " + m_Stars);
             m_SoundPlayer.PlayWinSound();
             foreach (Bridge bridge in m_BridgesInside.Values)
@@ -272,7 +273,7 @@ public class BoardManager : MonoBehaviour
         float avgStars = ((float)timeStars + (float)movesStars) / 2;
 
         m_Stars = (int)avgStars;
-        if (m_Stars >= 2)
+        /*if (m_Stars >= 2)
         {
             m_StarsCanvas.transform.Find("FilledStar2").gameObject.SetActive(true);
         }
@@ -280,7 +281,7 @@ public class BoardManager : MonoBehaviour
         if (m_Stars >= 3)
         {
             m_StarsCanvas.transform.Find("FilledStar3").gameObject.SetActive(true);
-        }
+        }*/
     }
 
     private SlotManager getNextSlot(SlotManager i_Current, SlotManager i_Last)

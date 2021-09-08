@@ -36,8 +36,8 @@ public class SideObserver: MonoBehaviour
 
     public void BridgeEnter(int i_StartRow, int i_EndRow, int i_StartCol, int i_EndCol, int i_BridgeHeight, eColor i_BridgeColor)
     {
-        makeRightBigger(ref i_StartRow, ref i_EndRow);
-        makeRightBigger(ref i_StartCol, ref i_EndCol);
+        Debug.Log(i_BridgeColor);
+        fixCoordinates(ref i_StartRow, ref i_EndRow, ref i_StartCol, ref i_EndCol);
         switch (m_Side)
         {
             case eSide.A:
@@ -114,6 +114,7 @@ public class SideObserver: MonoBehaviour
 
     public void BridgeLeave(int i_StartRow, int i_EndRow, int i_StartCol, int i_EndCol, int i_BridgeHeight)
     {
+        fixCoordinates(ref i_StartRow, ref i_EndRow, ref i_StartCol, ref i_EndCol);
         switch (m_Side)
         {
             case eSide.A:
@@ -217,6 +218,12 @@ public class SideObserver: MonoBehaviour
             m_Differences++;
         }
         //Debug.Log("Side " + m_Side + ", Previous: " + i_PrevColor + ", New: " + i_NewColor + ", Solution: " + i_SolutionColor);
+    }
+
+    private void fixCoordinates(ref int io_StartRow, ref int io_EndRow, ref int io_StartCol, ref int io_EndCol)
+    {
+        makeRightBigger(ref io_StartRow, ref io_EndRow);
+        makeRightBigger(ref io_StartCol, ref io_EndCol);
     }
 
     private void makeRightBigger(ref int io_Left, ref int io_Right)

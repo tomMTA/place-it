@@ -45,7 +45,6 @@ public class SideMatrixWithDepth
 
     public void UpdateColor(int i_X, int i_Y, int i_Depth, eColor i_Color)
     {
-        //Debug.Log((i_X + 1) + ", " + (i_Y + 1) + " " + i_Color);
         m_SideMatrixWithDepths[i_X, i_Y].Add(i_Depth, i_Color);
     }
 

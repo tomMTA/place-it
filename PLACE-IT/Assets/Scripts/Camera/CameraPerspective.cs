@@ -7,8 +7,8 @@ public class CameraPerspective : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera Camera2dSideA;
     [SerializeField] private Camera Camera2dSideB;
-    [SerializeField] private Canvas canvas;
-    private GameObject m_StarsImage;
+    [SerializeField] private Canvas mainCanvas;
+    [SerializeField] private GameObject winPanel;
     private bool m_IsWin;
 
     // Start is called before the first frame update
@@ -18,7 +18,6 @@ public class CameraPerspective : MonoBehaviour
         Camera2dSideA.enabled = false;
         Camera2dSideB.enabled = false;
         m_IsWin = false;
-        m_StarsImage = canvas.transform.Find("Level Stars").gameObject;
     }
 
     // Update is called once per frame
@@ -47,22 +46,22 @@ public class CameraPerspective : MonoBehaviour
         {
             if (m_IsWin)
             {
-                m_StarsImage.SetActive(true);
+                winPanel.SetActive(true);
             }
 
-            canvas.worldCamera = mainCamera;
+            mainCanvas.worldCamera = mainCamera;
             disableSideCameras();
         }
         else
         {
-            if (m_StarsImage.active)
+            if (winPanel.active)
             {
                 m_IsWin = true;
-                m_StarsImage.SetActive(false);
+                winPanel.SetActive(false);
             }
 
             Camera2dSideA.enabled = !Camera2dSideA.enabled;
-            canvas.worldCamera = Camera2dSideA;
+            mainCanvas.worldCamera = Camera2dSideA;
         }
     }
 
@@ -78,11 +77,11 @@ public class CameraPerspective : MonoBehaviour
         Camera2dSideB.enabled = !Camera2dSideB.enabled;
         if (Camera2dSideB.enabled)
         {
-            canvas.worldCamera = Camera2dSideB;
+            mainCanvas.worldCamera = Camera2dSideB;
         }
         else
         {
-            canvas.worldCamera = Camera2dSideA;
+            mainCanvas.worldCamera = Camera2dSideA;
         }
     }
 }
