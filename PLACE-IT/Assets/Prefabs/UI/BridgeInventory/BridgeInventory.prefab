@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 820bfb14d55b50040a5b2559d7080f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeBridge: {fileID: 0}
   bridgeButtons: []
 --- !u!1001 &8598097549878266007
 PrefabInstance:
