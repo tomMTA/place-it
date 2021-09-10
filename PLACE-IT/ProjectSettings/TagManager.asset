@@ -21,6 +21,7 @@ TagManager:
   - ApplauseSound
   - ThemeSound
   - MusicSlider
+  - OptionsMenu
   layers:
   - Default
   - TransparentFX
