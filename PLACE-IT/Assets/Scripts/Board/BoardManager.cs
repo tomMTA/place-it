@@ -50,6 +50,8 @@ public class BoardManager : MonoBehaviour
                 m_SlotManagers[temp.Row - 1, temp.Col - 1] = temp;
             }
         }
+
+        PauseMenu.GameIsPaused = false;
     }
     public bool IsRotated
     {

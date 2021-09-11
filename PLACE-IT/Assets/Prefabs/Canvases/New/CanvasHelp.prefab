@@ -91,7 +91,7 @@ MonoBehaviour:
     - change side.
 
 
-    Escape: Press during a game for a pause menu.'
+    Escape: Press during a game to pause the game.'
 --- !u!114 &4283213671322671413
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -538,6 +538,25 @@ PrefabInstance:
       propertyPath: m_ReferenceResolution.y
       value: 1200
       objectReference: {fileID: 0}
+    - target: {fileID: 8235639600063252195, guid: a022d96fa7bc39c48a714b7340f5ad6e,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Controls:
+
+
+        Enter: When mouse is on a bridge, press to place
+        it on the board.
+
+
+        Space: Enter/Leave sideways view.
+
+        X while
+        in sideway view - change side.
+
+
+        Escape: Press during a game to pause
+        the game.'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a022d96fa7bc39c48a714b7340f5ad6e, type: 3}
 --- !u!1001 &249511317
