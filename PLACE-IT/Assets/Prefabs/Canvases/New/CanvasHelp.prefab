@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8235639600063252195}
   - component: {fileID: 4283213671322671413}
   m_Layer: 5
-  m_Name: TextControlls2
+  m_Name: TextControls2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Controlls:
+  m_Text: 'Controls:
 
 
     Enter: When mouse is on a bridge, press to place it on
@@ -88,7 +88,10 @@ MonoBehaviour:
     Space: Enter/Leave sideways view.
 
     X while in sideway view
-    - change side.'
+    - change side.
+
+
+    Escape: Press during a game for a pause menu.'
 --- !u!114 &4283213671322671413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,7 +654,7 @@ GameObject:
   - component: {fileID: 5626566195265735002}
   - component: {fileID: 5626566195265735003}
   m_Layer: 5
-  m_Name: TextControlls1
+  m_Name: TextControls1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

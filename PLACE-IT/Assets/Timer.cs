@@ -18,23 +18,26 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float t = Time.time - m_StartTime;
-        m_CurrentMinutes = (int)t / 60;
-        m_CurrentSeconds = (int)t % 60;
-
-        timerText.text = "";
-        if (m_CurrentMinutes < 10)
+        if (!PauseMenu.GameIsPaused)
         {
-            timerText.text += "0";
-        }
+            float t = Time.time - m_StartTime;
+            m_CurrentMinutes = (int)t / 60;
+            m_CurrentSeconds = (int)t % 60;
 
-        timerText.text += m_CurrentMinutes.ToString() + ":";
-        if (m_CurrentSeconds < 10)
-        {
-            timerText.text += "0";
-        }
+            timerText.text = "";
+            if (m_CurrentMinutes < 10)
+            {
+                timerText.text += "0";
+            }
 
-        timerText.text += m_CurrentSeconds.ToString();
+            timerText.text += m_CurrentMinutes.ToString() + ":";
+            if (m_CurrentSeconds < 10)
+            {
+                timerText.text += "0";
+            }
+
+            timerText.text += m_CurrentSeconds.ToString();
+        }
     }
 
     public int Seconds

@@ -117,7 +117,9 @@ public class BoardManager : MonoBehaviour
         m_SoundPlayer.PlayClickSound();
         if (m_IsWin)
         {
+            //GameObject.Find("CanvasPause").GetComponent<PauseMenu>().GameIsPaused = true;
             Timer timer = GameObject.FindWithTag("Timer").GetComponent<Timer>();
+            PauseMenu.GameIsPaused = true;
             setStars(timer.Seconds);
             timer.enabled = false;
             m_StarsCanvas.SetActive(true);
