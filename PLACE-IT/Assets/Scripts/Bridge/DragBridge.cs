@@ -52,8 +52,8 @@ public class DragBridge : MonoBehaviour
 
 	void OnMouseDown()
 	{
-			Cursor.visible = false;
-			isClicked = true;
+		Cursor.visible = false;
+		isClicked = true;
 	}
 
 	void OnMouseDrag()

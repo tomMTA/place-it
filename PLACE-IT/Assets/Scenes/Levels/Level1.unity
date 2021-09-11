@@ -423,6 +423,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5626566194619474265, guid: a022d96fa7bc39c48a714b7340f5ad6e,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 505219570}
+    - target: {fileID: 5626566194619474265, guid: a022d96fa7bc39c48a714b7340f5ad6e,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626566194619474266, guid: a022d96fa7bc39c48a714b7340f5ad6e,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626566194619474266, guid: a022d96fa7bc39c48a714b7340f5ad6e,
+        type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626566194619474266, guid: a022d96fa7bc39c48a714b7340f5ad6e,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1800
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626566194619474266, guid: a022d96fa7bc39c48a714b7340f5ad6e,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a022d96fa7bc39c48a714b7340f5ad6e, type: 3}
 --- !u!1001 &249511317
