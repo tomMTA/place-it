@@ -31,14 +31,14 @@ public class PauseMenu : MonoBehaviour
 		GameIsPaused = true;
 		PauseMenuUI.SetActive(true);
 		Time.timeScale = 0f;
-		ToggleBridgeActivity(false);
+		//ToggleBridgeActivity(false);
 	}
 	public void ResumeGame()
 	{
 		GameIsPaused = false;
 		PauseMenuUI.SetActive(false);
 		Time.timeScale = 1f;
-		ToggleBridgeActivity(true);
+		//ToggleBridgeActivity(true);
 	}
 
 	private void ToggleBridgeActivity(bool toggle)

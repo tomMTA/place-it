@@ -141,7 +141,7 @@ public class Bridge : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (m_Enabled)
+        if (m_Enabled && !PauseMenu.GameIsPaused)
         {
             if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Return))
             {

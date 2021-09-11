@@ -16,14 +16,14 @@ public class HoverHighlight : MonoBehaviour
 
     void OnMouseOver()
     {
-		if (!Input.GetMouseButton(0))
+		if (!Input.GetMouseButton(0) && !PauseMenu.GameIsPaused)
 		{
 			meshRenderer.material.color = originalColor + new Color(0.3f, 0.3f, 0.3f);
 		}
     }
     void OnMouseExit()
     {
-        if (!Input.GetMouseButton(0))
+        if (!Input.GetMouseButton(0) && !PauseMenu.GameIsPaused)
         {
            ResetColor();
         }

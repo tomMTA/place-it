@@ -25,21 +25,29 @@ public class AlertPivot : MonoBehaviour
 
     void OnMouseDown()
     {
-        Cursor.visible = false;
-        RotationStarted.Invoke();
+        if (!PauseMenu.GameIsPaused)
+        {
+            Cursor.visible = false;
+            RotationStarted.Invoke();
+        }
     }
 
     void OnMouseUp()
     {
-        Cursor.visible = true;
-        string side = boardRotateScript.RotateToCloseEdge();
-        RotationStopped.Invoke(side);
+        if (!PauseMenu.GameIsPaused)
+        {
+            Cursor.visible = true;
+            string side = boardRotateScript.RotateToCloseEdge();
+            RotationStopped.Invoke(side);
+        }
     }
 
     void OnMouseDrag()
     {
-        float mouseRotation = Input.GetAxis("Mouse X");
-
-        boardRotateScript.RotateBoard(mouseRotation);
+        if (!PauseMenu.GameIsPaused)
+        {
+            float mouseRotation = Input.GetAxis("Mouse X");
+            boardRotateScript.RotateBoard(mouseRotation);
+        }
     }
 }

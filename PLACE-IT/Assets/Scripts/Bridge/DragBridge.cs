@@ -44,21 +44,27 @@ public class DragBridge : MonoBehaviour
 
 	void OnMouseUp()
 	{
-		Cursor.visible = true;
-		isClicked = false;
-		HoverHighlight HoverHighlightScriptReference = GetComponent<HoverHighlight>();
-		HoverHighlightScriptReference.ResetColor();
+		if (!PauseMenu.GameIsPaused)
+		{
+			Cursor.visible = true;
+			isClicked = false;
+			HoverHighlight HoverHighlightScriptReference = GetComponent<HoverHighlight>();
+			HoverHighlightScriptReference.ResetColor();
+		}
 	}
 
 	void OnMouseDown()
 	{
-		Cursor.visible = false;
-		isClicked = true;
+		if (!PauseMenu.GameIsPaused)
+		{
+			Cursor.visible = false;
+			isClicked = true;
+		}
 	}
 
 	void OnMouseDrag()
 	{
-		if (enabled)
+		if (!PauseMenu.GameIsPaused)
 		{
 			mouseAxisX = Input.GetAxis("Mouse X");
 			mouseAxisY = Input.GetAxis("Mouse Y");
