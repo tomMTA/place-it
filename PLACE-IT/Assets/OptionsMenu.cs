@@ -13,7 +13,6 @@ public class OptionsMenu : MonoBehaviour
 	private void Start()
 	{
 		FullscreenToggle.isOn = Screen.fullScreen;
-		//FullscreenToggle.RefreshShownValue();
 		resolutions = Screen.resolutions;
 		resolutionsDropdown.ClearOptions();
 

@@ -68,10 +68,4 @@ public class BoardInit : MonoBehaviour
         verticalFrame[0].transform.localPosition = new Vector3(((float)width / -2) - 0.25f, 0.5f, 0);
         verticalFrame[1].transform.localPosition = new Vector3(((float)width / 2) + 0.25f, 0.5f, 0);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

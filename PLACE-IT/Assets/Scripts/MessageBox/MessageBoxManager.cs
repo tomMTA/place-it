@@ -10,10 +10,6 @@ public class MessageBoxManager : MonoBehaviour
     {
         m_Enabled = true;
         Invoke("DisableText", 3f);
-        /*while (m_Enabled)
-        {
-            GUI.Label(new Rect(16, -103, 115, 19), i_Text);
-        }*/
     }
 
     void DisableText()
@@ -21,7 +17,6 @@ public class MessageBoxManager : MonoBehaviour
         m_Enabled = false;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         m_Enabled = false;

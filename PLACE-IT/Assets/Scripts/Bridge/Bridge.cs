@@ -63,10 +63,6 @@ public class Bridge : MonoBehaviour
     {
 		bridgeAngle += Input.GetAxis("Mouse X") * bridgeRotationSpeed * -Time.deltaTime;
 		bridgeAngle = Mathf.Clamp(bridgeAngle, 0, 180);
-        //if (Input.GetMouseButtonDown(0));
-        //{
-        //    this.transform.Rotate(Time.deltaTime * 10);
-        //}
     }
 
     public void HighlightSlots(SlotManager i_LeftSlot)
@@ -145,7 +141,6 @@ public class Bridge : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Return))
             {
-                //Debug.Log((m_IsInSlot ? "inside. " : "not inside. ") + (m_IsInPlacement ? "in placement." : "not in placement"));
                 if (m_IsInSlot)
                 {
                     returnUp();
@@ -196,10 +191,8 @@ public class Bridge : MonoBehaviour
 
     private void setForPlacementIfPossible()
     {
-        //try
         {
             m_IsBoardRotated = m_Board.IsRotated;
-            //m_LeftSlot = m_SlotsHighlighter.CurrentSlotManager;
             m_Board.PlaceBridge(this);
             Vector3 differenceVector = m_SlotsHighlighter.GetDifferenceVector();
             Vector3 plainDifference = new Vector3(differenceVector.x, 0, differenceVector.z);
@@ -211,12 +204,6 @@ public class Bridge : MonoBehaviour
             transform.GetComponent<DragBridge>().enabled = false;
             m_SlotsTarget = new Vector3(transform.position.x, transform.position.y - differenceVector.y - 2f, transform.position.z);
             m_IsInPlacement = true;
-        }
-        //catch (System.Exception e)
-        {
-            /*MessageBoxManager mbm = GameObject.Find("MessageBox").GetComponent<MessageBoxManager>();
-            mbm.ShowText("hi");
-            mbm.ShowText(e.ToString);*/
         }
     }
 
@@ -238,7 +225,6 @@ public class Bridge : MonoBehaviour
         transform.GetComponent<DragBridge>().enabled = true;
         m_SlotsHighlighter.enabled = true;
         m_Board.PullOutBridge(this);
-        //Debug.Log("Curr IsRotated = " + m_Board.IsRotated + " prev IsRotated = " + m_IsBoardRotated);
         m_IsInSlot = false;
         ExitedSlot?.Invoke(gameObject);
     }

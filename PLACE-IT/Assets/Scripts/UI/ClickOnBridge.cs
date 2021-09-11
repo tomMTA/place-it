@@ -13,7 +13,6 @@ public class ClickOnBridge : MonoBehaviour
 	public void BridgeButtonClicked()
 	{
 		bridgeButtonClicked?.Invoke(bridgeRef);
-		//bridgeRef.SetActive(!bridgeRef.activeInHierarchy);
 	}
 
 	public Bridge BridgeScript

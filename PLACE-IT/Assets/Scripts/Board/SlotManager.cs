@@ -21,16 +21,6 @@ public class SlotManager : MonoBehaviour
         get { return m_HeightsAbove; }
     }
 
-    /*public void AddHeightAbove(int i_Height)
-    {
-        m_HeightsAbove.Add(i_Height);
-    }
-
-    public void RemoveHeightAbove(int i_Height)
-    {
-        m_HeightsAbove.Remove(i_Height);
-    }*/
-
     public int Row
     {
         get { return m_Row; }

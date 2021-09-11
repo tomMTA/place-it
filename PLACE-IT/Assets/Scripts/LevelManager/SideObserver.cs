@@ -11,7 +11,6 @@ public class SideObserver: MonoBehaviour
 
     public SideObserver(string i_Level, eSide i_Side)
     {
-        //Debug.Log("Level" + i_Level + "Side" + i_Side);
         m_Solution = GameObject.Find("Level" + i_Level + "Side" + i_Side).GetComponent<SideMatrix>();
         m_Side = i_Side;
         m_Differences = 0;
@@ -23,10 +22,8 @@ public class SideObserver: MonoBehaviour
                 {
                     m_Differences++;
                 }
-                //Debug.Log("Color at [" + i + ", " + j + "]: " + m_Solution.At(i, j));
             }
         }
-        //Debug.Log("Side " + m_Side + " initial differences: " + m_Differences);
     }
 
     public int Differences
@@ -56,31 +53,17 @@ public class SideObserver: MonoBehaviour
                 if (i_StartCol == i_EndCol)
                 {
                     updateForFullBridge(8 - i_EndRow, 8 - i_StartRow, i_BridgeHeight, 8 - i_StartCol, i_BridgeColor);
-                    //Debug.Log("Side " + m_Side + ", startRow: " + i_StartRow + ", endRow: " + i_EndRow);
-                    //Debug.Log("Side " + m_Side + " Depth: " + (8 - i_StartCol));
                 }
                 else
                 {
                     updateForOnlyHeight(8 - i_StartRow, i_BridgeHeight, 8 - i_EndCol, i_BridgeColor);
-                    //Debug.Log("Side " + m_Side + " Depth: " + (8 - i_EndCol));
                 }
                 break;
         }
-
-        //printAllDifferences();
-        //Debug.Log("Side " + m_Side + " differences: " + m_Differences);
-        //printSideView();
     }
 
     private void updateForFullBridge(int i_StartX, int i_EndX, int i_Y, int i_Depth, eColor i_BridgeColor)
     {
-        /*if (i_StartX > i_EndX)
-        {
-            int temp = i_StartX;
-            i_StartX = i_EndX;
-            i_EndX = temp;
-        }
-*/
        updateForOnlyHeight(i_StartX, i_Y, i_Depth, i_BridgeColor);
         for (int xIterator = i_StartX + 1; xIterator < i_EndX; xIterator++)
         {
@@ -138,9 +121,6 @@ public class SideObserver: MonoBehaviour
                 }
                 break;
         }
-
-        //Debug.Log("Side " + m_Side + " differences: " + m_Differences);
-        //printSideView();
     }
 
     private void removeForFullBridge(int i_StartX, int i_EndX, int i_Y, int i_Depth)
@@ -190,7 +170,6 @@ public class SideObserver: MonoBehaviour
         m_ObservedColors.UpdateColor(i_X, i_Y, i_Depth, i_Color);
         newColor = m_ObservedColors.GetColor(i_X, i_Y);
         updateDifferences(prevColor, newColor, solutionColor);
-        //Debug.Log("Side " + m_Side + " updated at (" + i_X + ", " + i_Y + ")");
     }
 
     private void removeColorAndUpdateDifferences(int i_X, int i_Y, int i_Depth)
@@ -208,16 +187,13 @@ public class SideObserver: MonoBehaviour
     {
         if (!i_PrevColor.IsEqual(i_SolutionColor) && i_NewColor.IsEqual(i_SolutionColor))
         {
-            //Debug.Log("Decreasing differences");
             m_Differences--;
         }
 
         if (i_PrevColor.IsEqual(i_SolutionColor) && !i_NewColor.IsEqual(i_SolutionColor))
         {
-            //Debug.Log("Increasing differences");
             m_Differences++;
         }
-        //Debug.Log("Side " + m_Side + ", Previous: " + i_PrevColor + ", New: " + i_NewColor + ", Solution: " + i_SolutionColor);
     }
 
     private void fixCoordinates(ref int io_StartRow, ref int io_EndRow, ref int io_StartCol, ref int io_EndCol)

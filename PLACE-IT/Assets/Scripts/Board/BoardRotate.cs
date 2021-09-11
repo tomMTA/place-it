@@ -8,41 +8,7 @@ public class BoardRotate : MonoBehaviour
     private float mouseAxisX;
     public delegate void SwitchSideHandler();
     public SwitchSideHandler SwitchedSide;
-
-    /*// Start is called before the first frame update
-    void Start()
-    {
-        
-    }*/
-/*
-    void OnMouseOver()
-    {
-        //change cursor to arrows
-
-
-    }
-
-    void OnMouseDown()
-    {
-        Cursor.visible = false;
-    }
-
-    void OnMouseUp()
-    {
-        Cursor.visible = true;
-        RotateToCloseEdge();
-    }*/
-
-    /*void OnMouseDrag()
-    {
-        float mouseRotation = Input.GetAxis("Mouse X");
-
-        if (isInLimitsAndCorrect(mouseRotation))
-        {
-            transform.Rotate(0, 0, -(Input.GetAxis("Mouse X") * rotationSpeed));
-        }
-    }*/
-
+	
     public void RotateBoard(float i_MouseRotation)
     {
         if (isInLimitsAndCorrect(i_MouseRotation))
@@ -116,10 +82,4 @@ public class BoardRotate : MonoBehaviour
 
         return isInLimits;
     }
-
-    /*// Update is called once per frame
-    void Update()
-    {
-        
-    }*/
 }

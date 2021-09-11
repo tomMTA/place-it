@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class VolumeSaveController : MonoBehaviour
 {
     [SerializeField] Slider m_VolumeSlider;
-    //[SerializeField] AudioSource[] m_Sources;
     [SerializeField] string[] m_SoundNames;
     const float DEFAULT_VOLUME = 0.7f;
 
@@ -23,8 +22,6 @@ public class VolumeSaveController : MonoBehaviour
         m_VolumeSlider = i_Slider;
         for (int i = 0; i < m_SoundNames.Length; i++)
         {
-            //Debug.Log("Sound name" + m_Sources[i].clip.name);
-            //m_Sources[i] = GameObject.Find(m_SoundNames[i]).GetComponent<AudioSource>();
             PlayerPrefs.SetFloat(m_SoundNames[i] + " VolumeValue", m_VolumeSlider.value);
         }
         LoadValues();
@@ -41,7 +38,6 @@ public class VolumeSaveController : MonoBehaviour
             {
                 m_VolumeSlider.value = volumeValue;
                 GameObject.Find(m_SoundNames[i]).GetComponent<AudioSource>().volume = volumeValue;
-                //m_Sources[i].volume = volumeValue;
             }
         }
     }

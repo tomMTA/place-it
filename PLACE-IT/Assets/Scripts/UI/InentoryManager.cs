@@ -36,9 +36,7 @@ public class InentoryManager : MonoBehaviour
 			activeBridge = bridge;
 			setPositionOnActivated(activeBridge);
 			activeBridge.SetActive(true);
-			//activeBridge = bridge;
 		}
-		//bridge.Enabled = !bridge.Enabled;
 	}
 
 	public void ActiveBridgeEnteredBoard()

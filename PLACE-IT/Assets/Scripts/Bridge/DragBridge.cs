@@ -81,29 +81,7 @@ public class DragBridge : MonoBehaviour
 			}
 			transform.position = new Vector3(newX, transform.position.y, newZ);
 		}
-
-		/*if (Input.GetMouseButtonDown(1))
-		{
-			Rotate90Degree();
-		}*/
 	}
-
-	/*void OnMouseOver()
-	{
-		if (enabled && !isClicked && Input.GetMouseButtonDown(1))
-		{
-			Rotate90Degree();
-		}
-	}
-
-	private void Rotate90Degree()
-	{
-		int newYAngle = transform.eulerAngles.y == 180 ? 270 : 180;	
-		Tilted.Invoke();
-		m_IsTilted = !m_IsTilted;
-		transform.eulerAngles = new Vector3(transform.eulerAngles.x, newYAngle, transform.eulerAngles.z);
-		//slotsHighlighter.IsTilted = m_IsTilted;
-	}*/
 
 	//improve performance - calculate posToVerify once
 	private bool isInXRange(float newX)

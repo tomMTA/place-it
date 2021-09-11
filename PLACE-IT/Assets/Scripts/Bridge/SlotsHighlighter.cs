@@ -31,8 +31,6 @@ public class SlotsHighlighter : MonoBehaviour
         m_IsTilted = false;
         ray = new Ray(transform.position, Vector3.down);
     }
-        //Debug.Log("LocalPosition: " + this.GetComponent<Transform>().position);
-        //Debug.Log("GlobalPosition: " + this.transform.position);
 
     public bool IsTilted
     {
@@ -86,54 +84,7 @@ public class SlotsHighlighter : MonoBehaviour
 
     private void turnOffSlots()
     {
-        /*SlotManager currentSlotManager = CurrentSlotManager;
-        DragBridge dragBridge = transform.parent.GetComponent<DragBridge>();
-        BridgePlacement bridgePlacement = transform.parent.GetComponent<BridgePlacement>();
-        int otherRow = currentSlotManager.Row;
-        int otherCol = currentSlotManager.Col;*/
-
-        //currentSlotManager.TurnOff();
-        /*if (m_IsTilted)
-        {
-            otherRow += bridgePlacement.SpacesOccupies - 1;
-        }
-        else
-        {
-            otherCol += bridgePlacement.SpacesOccupies - 1;
-        }*/
-
-        /*if (otherRow <= 9 && otherCol <= 9)
-        {
-            *//*currentSlotManager.TurnOff();
-            m_BoardManager.TurnOffSlot(otherRow, otherCol);*//*
-        }*/
     }
-
-   /* private void turnOnSlots()
-    {
-        SlotManager currentSlotManager = CurrentSlotManager;
-        DragBridge dragBridge = transform.parent.GetComponent<DragBridge>();
-        BridgePlacement bridgePlacement = transform.parent.GetComponent<BridgePlacement>();
-        int otherRow = currentSlotManager.Row;
-        int otherCol = currentSlotManager.Col;
-
-
-        if (m_IsTilted)
-        {
-            otherRow += bridgePlacement.SpacesOccupies - 1;
-        }
-        else
-        {
-            otherCol += bridgePlacement.SpacesOccupies - 1;
-        }
-
-        if (otherRow <= 9 && otherCol <= 9)
-        {
-            //HoveredAboveSlot.Invoke(currentSlotManager.Row, currentSlotManager.Col, otherRow, otherCol);
-            *//*currentSlotManager.TurnOn();
-            m_BoardManager.TurnOnSlot(otherRow, otherCol);*//*
-        }
-    }*/
 
     // Update is called once per frame
     void FixedUpdate()
