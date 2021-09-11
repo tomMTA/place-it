@@ -11,9 +11,10 @@ public class DontDestroy : MonoBehaviour
         GameObject[] musicPlayers = GameObject.FindGameObjectsWithTag(m_Tag);
         if (musicPlayers.Length > 1)
         {
+            Debug.Log("Destroying..");
             Destroy(this.gameObject);
         }
-
+        Debug.Log("Num of objects: " + musicPlayers.Length);
         DontDestroyOnLoad(this.gameObject);
     }
 }

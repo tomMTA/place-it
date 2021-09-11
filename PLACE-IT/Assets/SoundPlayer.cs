@@ -17,12 +17,14 @@ public class SoundPlayer : MonoBehaviour
 
     public void PlayClickSound()
     {
-        m_AudioSource[0].Play();
+        //m_AudioSource[0].Play();
+        GameObject.Find("ClickSound").GetComponent<AudioSource>().Play();
     }
 
     public void PlayWinSound()
     {
-        m_AudioSource[1].Play();
+        //m_AudioSource[1].Play();
+        GameObject.Find("ApplauseSound").GetComponent<AudioSource>().Play();
     }
 
     /*public void PlayThemeSound()

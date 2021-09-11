@@ -143,7 +143,7 @@ public class Bridge : MonoBehaviour
     {
         if (m_Enabled)
         {
-            if (Input.GetMouseButtonDown(2))
+            if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Return))
             {
                 //Debug.Log((m_IsInSlot ? "inside. " : "not inside. ") + (m_IsInPlacement ? "in placement." : "not in placement"));
                 if (m_IsInSlot)
@@ -156,7 +156,7 @@ public class Bridge : MonoBehaviour
                 }
             }
 
-            if (!m_IsInSlot && Input.GetMouseButtonDown(1))
+            if (!m_IsInPlacement && !m_IsInSlot && Input.GetMouseButtonDown(1))
             {
                 Tilt();
             }
