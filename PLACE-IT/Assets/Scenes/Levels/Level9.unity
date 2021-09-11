@@ -639,12 +639,12 @@ PrefabInstance:
     - target: {fileID: 858863352349457376, guid: 7ca8d49549c8d604ba71fe9c3643daff,
         type: 3}
       propertyPath: m_Time_Bars.Array.data[0]
-      value: 20
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 858863352349457376, guid: 7ca8d49549c8d604ba71fe9c3643daff,
         type: 3}
       propertyPath: m_Time_Bars.Array.data[1]
-      value: 30
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 858863352349457376, guid: 7ca8d49549c8d604ba71fe9c3643daff,
         type: 3}
@@ -654,7 +654,7 @@ PrefabInstance:
     - target: {fileID: 858863352349457376, guid: 7ca8d49549c8d604ba71fe9c3643daff,
         type: 3}
       propertyPath: m_Moves_Bars.Array.data[1]
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8627313670183800277, guid: 7ca8d49549c8d604ba71fe9c3643daff,
         type: 3}
