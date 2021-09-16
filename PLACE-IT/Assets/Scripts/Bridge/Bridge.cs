@@ -199,6 +199,7 @@ public class Bridge : MonoBehaviour
 
             transform.SetParent(m_Board.transform);
             m_SlotsHighlighter.enabled = false;
+            gameObject.GetComponent<DragBridge>().enabled = false;
             m_OriginalPosition = transform.position;
             transform.position += plainDifference;
             transform.GetComponent<DragBridge>().enabled = false;
@@ -223,6 +224,7 @@ public class Bridge : MonoBehaviour
         transform.parent = m_OriginalParent;
         transform.position = m_OriginalPosition;
         transform.GetComponent<DragBridge>().enabled = true;
+        gameObject.GetComponent<DragBridge>().enabled = true;
         m_SlotsHighlighter.enabled = true;
         m_Board.PullOutBridge(this);
         m_IsInSlot = false;

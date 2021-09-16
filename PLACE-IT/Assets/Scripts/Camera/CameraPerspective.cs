@@ -23,19 +23,22 @@ public class CameraPerspective : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!PauseMenu.GameIsPaused)
         {
-            switchPerspective();
-        }
-
-        if (!mainCamera.enabled)
-        {
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                switchBetweenSideCameras();
-                //disableMovement
+                switchPerspective();
             }
 
+            if (!mainCamera.enabled)
+            {
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    switchBetweenSideCameras();
+                    //disableMovement
+                }
+
+            }
         }
     }
 

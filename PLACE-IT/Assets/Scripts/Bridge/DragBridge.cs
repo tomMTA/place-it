@@ -44,7 +44,7 @@ public class DragBridge : MonoBehaviour
 
 	void OnMouseUp()
 	{
-		if (!PauseMenu.GameIsPaused)
+		if (!PauseMenu.GameIsPaused)// && enabled)
 		{
 			Cursor.visible = true;
 			isClicked = false;
@@ -55,7 +55,7 @@ public class DragBridge : MonoBehaviour
 
 	void OnMouseDown()
 	{
-		if (!PauseMenu.GameIsPaused)
+		if (!PauseMenu.GameIsPaused)// && enabled)
 		{
 			Cursor.visible = false;
 			isClicked = true;
@@ -64,7 +64,7 @@ public class DragBridge : MonoBehaviour
 
 	void OnMouseDrag()
 	{
-		if (!PauseMenu.GameIsPaused)
+		if (!PauseMenu.GameIsPaused && enabled)
 		{
 			mouseAxisX = Input.GetAxis("Mouse X");
 			mouseAxisY = Input.GetAxis("Mouse Y");
